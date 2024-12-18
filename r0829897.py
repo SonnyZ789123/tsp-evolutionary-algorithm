@@ -1,6 +1,63 @@
 import Reporter
 import numpy as np
 
+class Individual:
+	def __init__(self, cycle, distance_matrix):
+		self.cycle = cycle
+		self.distanceMatrix = distance_matrix
+		self._fitness = self.calculate_fitness()
+
+	@property
+	def fitness(self):
+		return self._fitness
+
+	def calculate_fitness(self):
+		# TODO: calculate the fitness of the individual
+		return 0
+
+	def mutate(self):
+		# Your code here.
+		return 0
+
+	def __str__(self):
+		return str(self.cycle) + " : " + str(self.fitness)
+
+class Population:
+	def __init__(self, size, distance_matrix):
+		self.size = size
+		self.distanceMatrix = distance_matrix
+		self.individuals = [Individual(np.random.permutation(distance_matrix.shape[0]), distance_matrix) for _ in range(size)]
+
+	def __str__(self):
+		return "\n".join([str(individual) for individual in self.individuals])
+
+class EvolutionaryAlgorithm:
+	def __init__(self, distance_matrix):
+		self.population = Population(10, distance_matrix)
+
+	def select(self):
+		# Your code here.
+		return 0
+
+	def recombination(self):
+		# Your code here.
+		return 0
+
+	def elemination(self):
+		# Your code here.
+		return 0
+
+def solve_tsp(distance_matrix):
+	evolutionary_algorithm = EvolutionaryAlgorithm(distance_matrix)
+
+	convergenceTest = True
+	while convergenceTest:
+		evolutionary_algorithm.select()
+		evolutionary_algorithm.recombination()
+		evolutionary_algorithm.elemination()
+
+	return 0
+
 # Modify the class name to match your student number.
 class r0829897:
 
@@ -14,7 +71,7 @@ class r0829897:
 		distanceMatrix = np.loadtxt(file, delimiter=",")
 		file.close()
 
-		# Your code here.
+		# TODO: Your code here.
 		yourConvergenceTestsHere = True
 		while( yourConvergenceTestsHere ):
 			meanObjective = 0.0
@@ -32,5 +89,8 @@ class r0829897:
 			if timeLeft < 0:
 				break
 
-		# Your code here.
+		# TODO: Your code here.
 		return 0
+
+if __name__ == "__main__":
+	solve_tsp(np.array([[0, 1, 2], [1, 0, 3], [2, 3, 0]]))
