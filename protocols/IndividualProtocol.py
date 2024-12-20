@@ -14,6 +14,3 @@ class IndividualProtocol(Protocol):
 
 	def mutate(self) -> None:
 		...
-
-	def __str__(self) -> str:
-		...

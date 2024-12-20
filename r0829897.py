@@ -1,7 +1,3 @@
-from select import select
-
-from numpy.typing import NDArray
-
 import Reporter
 import numpy as np
 
