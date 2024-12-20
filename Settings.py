@@ -1,5 +1,6 @@
 class Initialization:
 	population_size: int = 100
+	max_iterations: int = 100
 
 
 class Selection:

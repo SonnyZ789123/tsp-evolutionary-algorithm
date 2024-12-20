@@ -1,10 +1,11 @@
 from typing import Protocol
-from custom_types import DistanceMatrix, Cycle
+from custom_types import Cycle
+from protocols.DistanceMatrixProtocol import DistanceMatrixProtocol
 
 
 class IndividualProtocol(Protocol):
 	cycle: Cycle
-	distance_matrix: DistanceMatrix
+	distance_matrix: DistanceMatrixProtocol
 	_fitness: float
 
 	@property

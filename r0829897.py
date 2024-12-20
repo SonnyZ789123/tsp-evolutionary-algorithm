@@ -11,19 +11,33 @@ from MutationMethods import MutationMethods
 from RecombinationMethods import RecombinationMethods
 from SelectionMethods import SelectionMethods
 from Settings import Settings
+from protocols.DistanceMatrixProtocol import DistanceMatrixProtocol
 from protocols.EvolutionaryAlgorithmProtocol import EvolutionaryAlgorithmProtocol
 from protocols.PopulationProtocol import PopulationProtocol
 from protocols.IndividualProtocol import IndividualProtocol
-from custom_types import Cycle, DistanceMatrix
+from custom_types import Cycle
+from custom_types import DistanceMatrixInternal
 from protocols.SettingsProtocol import SettingsProtocol
+
+
+"""Class to make the distance matrix read-only"""
+class DistanceMatrix:
+	_value: DistanceMatrixInternal
+
+	def __init__(self, value: DistanceMatrixInternal):
+		self._value = value
+
+	@property
+	def value(self):
+		return self._value  # Read-only access
 
 
 class Individual:
 	cycle: Cycle
-	distance_matrix: DistanceMatrix
+	distance_matrix: DistanceMatrixProtocol
 	_fitness: float
 
-	def __init__(self, cycle: Cycle, distance_matrix: DistanceMatrix):
+	def __init__(self, cycle: Cycle, distance_matrix: DistanceMatrixProtocol):
 		self.cycle = cycle
 		self.distance_matrix = distance_matrix
 
@@ -40,13 +54,13 @@ class Individual:
 
 class Population:
 	size: int
-	distance_matrix: DistanceMatrix
+	distance_matrix: DistanceMatrixProtocol
 	individuals: list[IndividualProtocol]
 
-	def __init__(self, size: int, distance_matrix: NDArray[np.float64]):
+	def __init__(self, size: int, distance_matrix: DistanceMatrixProtocol):
 		self.size = size
 		self.distance_matrix = distance_matrix
-		self.individuals = [Individual(np.random.permutation(distance_matrix.shape[0]), distance_matrix) for _ in
+		self.individuals = [Individual(np.random.permutation(distance_matrix.value.shape[0]), distance_matrix) for _ in
 							range(size)]
 
 	def __str__(self):
@@ -56,15 +70,17 @@ class Population:
 class EvolutionaryAlgorithm:
 	settings: SettingsProtocol = Settings()
 	population: PopulationProtocol
+	_iteration: int = 0
 	_offsprings: list[IndividualProtocol] = []
 	_converged: bool
 
-	def __init__(self, distance_matrix: NDArray[np.float64]):
+	def __init__(self, distance_matrix: DistanceMatrixProtocol):
 		self.population = Population(10, distance_matrix)
 
 	@property
 	def converged(self) -> bool:
-		return False
+		self._iteration += 1
+		return self.settings.initialization.max_iterations <= self._iteration
 
 	def select(self) -> Individual:
 		return SelectionMethods.random(self.population)
@@ -82,12 +98,12 @@ class EvolutionaryAlgorithm:
 		self.population.individuals = new_individuals
 
 
-def solve_tsp(distance_matrix: NDArray[np.float64]):
+def solve_tsp(distance_matrix: DistanceMatrixProtocol):
 	"""
     :param distance_matrix: should be a 2D numpy array
     """
-	assert distance_matrix.ndim == 2  # distance_matrix should be a 2D array
-	assert distance_matrix.shape[0] == distance_matrix.shape[1]  # distance_matrix should be square
+	assert distance_matrix.value.ndim == 2  # distance_matrix should be a 2D array
+	assert distance_matrix.value.shape[0] == distance_matrix.value.shape[1]  # distance_matrix should be square
 	evolutionary_algorithm: EvolutionaryAlgorithmProtocol = EvolutionaryAlgorithm(distance_matrix)
 
 	while not evolutionary_algorithm.converged:
@@ -134,4 +150,4 @@ class r0829897:
 
 
 if __name__ == "__main__":
-	solve_tsp(np.array([[0, 1, 2], [1, 0, 3], [2, 3, 0]]))
+	solve_tsp(DistanceMatrix(np.array([[0, 1, 2], [1, 0, 3], [2, 3, 0]])))
