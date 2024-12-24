@@ -13,5 +13,14 @@ class Population:
 		self.distance_matrix = distance_matrix
 		self.individuals = InitializationMethods.generate_random_valid_population(size, distance_matrix)
 
+	def mean_fitness(self) -> float:
+		return sum([individual.fitness for individual in self.individuals]) / self.size
+
+	def best_fitness(self) -> float:
+		return max([individual.fitness for individual in self.individuals])
+
+	def best_individual(self) -> IndividualProtocol:
+		return max(self.individuals, key=lambda individual: individual.fitness)
+
 	def __str__(self):
 		return "\n".join([str(individual) for individual in self.individuals])

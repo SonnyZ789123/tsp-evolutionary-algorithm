@@ -20,6 +20,10 @@ def solve_tsp(distance_matrix: DistanceMatrixProtocol):
 		evolutionary_algorithm.recombination()
 		evolutionary_algorithm.elimination()
 
+		print("mean fitness", evolutionary_algorithm.population.mean_fitness())
+		print("best fitness", evolutionary_algorithm.population.best_fitness())
+		print("best individual", evolutionary_algorithm.population.best_individual().cycle)
+
 	return 0
 
 
