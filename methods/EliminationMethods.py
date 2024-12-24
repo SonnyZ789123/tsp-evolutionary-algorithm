@@ -1,7 +1,6 @@
 from typing import List
 
 from protocols.IndividualProtocol import IndividualProtocol
-
 from protocols.PopulationProtocol import PopulationProtocol
 
 

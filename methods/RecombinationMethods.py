@@ -2,7 +2,7 @@ from typing import Tuple
 import numpy as np
 
 from protocols.IndividualProtocol import IndividualProtocol
-from r0829897 import Individual
+from classes.Individual import Individual
 
 
 class RecombinationMethods:

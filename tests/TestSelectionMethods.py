@@ -4,7 +4,7 @@ import numpy as np
 
 from methods.SelectionMethods import SelectionMethods
 from protocols.PopulationProtocol import PopulationProtocol
-from r0829897 import DistanceMatrix
+from classes.DistanceMatrix import DistanceMatrix
 from tests.MockIndividual import MockIndividual
 from tests.MockPopulation import MockPopulation
 
