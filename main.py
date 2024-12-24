@@ -20,8 +20,8 @@ def solve_tsp():
 
 	while not evolutionary_algorithm.converged:
 		evolutionary_algorithm.select()
-		evolutionary_algorithm.mutation()
 		evolutionary_algorithm.recombination()
+		evolutionary_algorithm.mutation()
 		evolutionary_algorithm.elimination()
 
 		print("mean fitness", evolutionary_algorithm.population.mean_fitness())

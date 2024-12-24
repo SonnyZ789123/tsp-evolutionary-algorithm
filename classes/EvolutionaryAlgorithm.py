@@ -31,7 +31,7 @@ class EvolutionaryAlgorithm:
 		return SelectionMethods.random(self.population)
 
 	def mutation(self):
-		for individual in self.population.individuals:
+		for individual in self._offsprings:
 			if random.random() > self.settings.mutation.alpha:
 				individual.mutate()
 

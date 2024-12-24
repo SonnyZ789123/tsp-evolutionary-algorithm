@@ -2,7 +2,7 @@
 
 Initialization -> loop(Selection -> Variation -> Evaluation) -> Termination
 
-Variation = Mutation -> Recombination
+Variation = Recombination -> Mutation (on the offsprings)
 
 # Representation
 
