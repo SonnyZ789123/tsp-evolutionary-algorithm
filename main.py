@@ -6,7 +6,8 @@ from classes.DistanceMatrix import DistanceMatrix
 from classes.EvolutionaryAlgorithm import EvolutionaryAlgorithm
 from protocols.DistanceMatrixProtocol import DistanceMatrixProtocol
 from protocols.EvolutionaryAlgorithmProtocol import EvolutionaryAlgorithmProtocol
-from utils.plotting import generate_plot, normalize_to_0_100
+from utils.plotting import generate_plot
+from utils.utils import normalize_list
 
 
 def solve_tsp():
@@ -34,8 +35,15 @@ def solve_tsp():
 		mean_fitness_history.append(evolutionary_algorithm.population.mean_fitness())
 		best_fitness_history.append(evolutionary_algorithm.population.best_fitness())
 
-	generate_plot(list(range(len(mean_fitness_history))), normalize_to_0_100(mean_fitness_history), y_label="Mean fitness")
-	generate_plot(list(range(len(best_fitness_history))), normalize_to_0_100(best_fitness_history), y_label="Best fitness")
+	# Plotting
+	iteration_numbers = list(range(len(mean_fitness_history)))
+	mean_fitness_history_normalized = normalize_list(mean_fitness_history)
+	best_fitness_history_normalized = normalize_list(best_fitness_history)
+	difference_mean_best = [abs(mean_fitness_history_normalized[i] - best_fitness_history_normalized[i]) for i in
+							 range(len(mean_fitness_history))]
+	generate_plot(iteration_numbers, mean_fitness_history_normalized, y_label="Mean fitness")
+	generate_plot(iteration_numbers, best_fitness_history_normalized, y_label="Best fitness")
+	generate_plot(iteration_numbers, difference_mean_best, y_label="Difference mean - best fitness")
 
 	return 0
 

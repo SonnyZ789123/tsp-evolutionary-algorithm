@@ -6,6 +6,7 @@ from config.Settings import Settings
 from methods.EliminationMethods import EliminationMethods
 from methods.RecombinationMethods import RecombinationMethods
 from methods.SelectionMethods import SelectionMethods
+from methods.ConvergenceMethods import ConvergenceMethods
 from protocols.DistanceMatrixProtocol import DistanceMatrixProtocol
 from protocols.IndividualProtocol import IndividualProtocol
 from protocols.PopulationProtocol import PopulationProtocol
@@ -25,14 +26,18 @@ class EvolutionaryAlgorithm:
 	@property
 	def converged(self) -> bool:
 		self._iteration += 1
-		return self.settings.initialization.max_iterations <= self._iteration
+		if self._iteration >= self.settings.initialization.max_iterations:
+			return True
+		if ConvergenceMethods.difference_mean_and_best_fitness(self.population, 0.01):
+			return True
+		return False
 
 	def select(self) -> Individual:
 		return SelectionMethods.random(self.population)
 
 	def mutation(self):
 		for individual in self._offsprings:
-			if random.random() > self.settings.mutation.alpha:
+			if random.random() < self.settings.mutation.alpha:
 				individual.mutate()
 
 	def recombination(self) -> None:

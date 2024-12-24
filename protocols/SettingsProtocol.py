@@ -12,6 +12,7 @@ class SelectionProtocol(Protocol):
 
 class MutationProtocol(Protocol):
 	alpha: float
+	""" The probability of mutation. """
 
 
 class RecombinationProtocol(Protocol):
