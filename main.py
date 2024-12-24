@@ -6,10 +6,14 @@ from protocols.DistanceMatrixProtocol import DistanceMatrixProtocol
 from protocols.EvolutionaryAlgorithmProtocol import EvolutionaryAlgorithmProtocol
 
 
-def solve_tsp(distance_matrix: DistanceMatrixProtocol):
-	"""
-    :param distance_matrix: should be a 2D numpy array
-    """
+def solve_tsp():
+	# Read distance matrix from file.
+	file = open("tour50.csv")
+	distance_matrix_value = np.loadtxt(file, delimiter=",")
+	file.close()
+
+	distance_matrix: DistanceMatrixProtocol = DistanceMatrix(distance_matrix_value)
+
 	assert distance_matrix.value.ndim == 2  # distance_matrix should be a 2D array
 	assert distance_matrix.value.shape[0] == distance_matrix.value.shape[1]  # distance_matrix should be square
 	evolutionary_algorithm: EvolutionaryAlgorithmProtocol = EvolutionaryAlgorithm(distance_matrix)
@@ -28,4 +32,4 @@ def solve_tsp(distance_matrix: DistanceMatrixProtocol):
 
 
 if __name__ == "__main__":
-	solve_tsp(DistanceMatrix(np.array([[0, 1, 2], [1, 0, 3], [2, 3, 0]])))
+	solve_tsp()

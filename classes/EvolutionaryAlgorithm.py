@@ -20,7 +20,7 @@ class EvolutionaryAlgorithm:
 	_converged: bool
 
 	def __init__(self, distance_matrix: DistanceMatrixProtocol):
-		self.population = Population(10, distance_matrix)
+		self.population = Population(self.settings.initialization.population_size, distance_matrix)
 
 	@property
 	def converged(self) -> bool:
@@ -36,12 +36,12 @@ class EvolutionaryAlgorithm:
 				individual.mutate()
 
 	def recombination(self) -> None:
-		for _ in range(self.settings.initialization.population_size // 2):
+		self._offsprings = []
+		for _ in range(self.settings.initialization.population_size):
 			parent1 = self.select()
 			parent2 = self.select()
-			(offspring1, offspring2) = RecombinationMethods.deterministic_best_parent(parent1, parent2)
-			self._offsprings.append(offspring1)
-			self._offsprings.append(offspring2)
+			offspring = RecombinationMethods.deterministic_best_parent(parent1, parent2)
+			self._offsprings.append(offspring)
 
 	def elimination(self) -> None:
 		EliminationMethods.age_based(self.population, self._offsprings)
