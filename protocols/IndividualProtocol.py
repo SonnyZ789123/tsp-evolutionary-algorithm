@@ -1,5 +1,5 @@
 from typing import Protocol
-from custom_types import Cycle
+from config.custom_types import Cycle
 from protocols.DistanceMatrixProtocol import DistanceMatrixProtocol
 
 

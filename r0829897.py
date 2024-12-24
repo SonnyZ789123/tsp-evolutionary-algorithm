@@ -1,18 +1,18 @@
 import Reporter
 import numpy as np
 
-from EliminationMethods import EliminationMethods
-from FitnessMethods import FitnessMethods
-from MutationMethods import MutationMethods
-from RecombinationMethods import RecombinationMethods
-from SelectionMethods import SelectionMethods
-from Settings import Settings
+from methods.EliminationMethods import EliminationMethods
+from methods.FitnessMethods import FitnessMethods
+from methods.MutationMethods import MutationMethods
+from methods.RecombinationMethods import RecombinationMethods
+from methods.SelectionMethods import SelectionMethods
+from config.Settings import Settings
 from protocols.DistanceMatrixProtocol import DistanceMatrixProtocol
 from protocols.EvolutionaryAlgorithmProtocol import EvolutionaryAlgorithmProtocol
 from protocols.PopulationProtocol import PopulationProtocol
 from protocols.IndividualProtocol import IndividualProtocol
-from custom_types import Cycle
-from custom_types import DistanceMatrixInternal
+from config.custom_types import Cycle
+from config.custom_types import DistanceMatrixInternal
 from protocols.SettingsProtocol import SettingsProtocol
 
 

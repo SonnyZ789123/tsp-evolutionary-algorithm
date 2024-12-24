@@ -1,6 +1,6 @@
 from typing import Protocol
 
-from custom_types import DistanceMatrixInternal
+from config.custom_types import DistanceMatrixInternal
 
 
 class DistanceMatrixProtocol(Protocol):
