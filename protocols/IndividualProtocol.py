@@ -5,7 +5,7 @@ from protocols.DistanceMatrixProtocol import DistanceMatrixProtocol
 
 class IndividualProtocol(Protocol):
 	cycle: Cycle
-	""" The cycle of the individual, represented as a list of indices, from 1 to length of the distance matrix. """
+	""" The cycle of the individual, represented as a list of indices, from 0 to length-1 of the distance matrix. """
 	distance_matrix: DistanceMatrixProtocol
 	""" 
 	The distance matrix representing the distances between the cities. The length of the rows should be equal 

@@ -13,5 +13,5 @@ class FitnessMethods:
 		length = 0
 
 		for i in range(len(cycle)):
-			length += distance_matrix.value[cycle[i]-1, cycle[(i + 1) % len(cycle)]-1]
+			length += distance_matrix.value[cycle[i], cycle[(i + 1) % len(cycle)]]
 		return -length

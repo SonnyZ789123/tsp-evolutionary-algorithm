@@ -10,7 +10,7 @@ from methods.FitnessMethods import FitnessMethods
 MOCK_DISTANCE_MATRIX = DistanceMatrix(np.array([[1, 2, 1],
 												[9, 3, 2],
 												[1, 5, 4]]))
-MOCK_INDIVIDUAL = MockIndividual(np.array([2, 1, 3]), MOCK_DISTANCE_MATRIX, lambda _: -1, lambda _: None)
+MOCK_INDIVIDUAL = MockIndividual(np.array([1, 0, 2]), MOCK_DISTANCE_MATRIX, lambda _: -1, lambda _: None)
 
 
 class TestFitnessMethods(unittest.TestCase):
