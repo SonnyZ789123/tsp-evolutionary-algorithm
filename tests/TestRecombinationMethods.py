@@ -1,5 +1,4 @@
 import unittest
-from unittest.mock import patch
 
 import numpy as np
 
@@ -16,9 +15,10 @@ MOCK_INDIVIDUAL2 = MockIndividual(np.array([4, 5, 3, 2, 1, 6]), MOCK_DISTANCE_MA
 
 
 class TestRecombinationMethods(unittest.TestCase):
-	def test_deterministic_best_parent(self, ):
+	def test_deterministic_best_parent(self):
 		offspring = RecombinationMethods.deterministic_best_parent(MOCK_INDIVIDUAL1, MOCK_INDIVIDUAL2)
 		self.assertEqual(offspring, MOCK_INDIVIDUAL1)
+
 
 if __name__ == '__main__':
 	unittest.main()
