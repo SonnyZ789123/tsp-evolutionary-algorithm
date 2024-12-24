@@ -18,7 +18,7 @@ class Individual:
 		return FitnessMethods.negative_of_length(self)
 
 	def mutate(self) -> None:
-		MutationMethods.swap_mutation(self)
+		MutationMethods.swap(self)
 
 	def __str__(self) -> str:
 		return str(self.cycle) + " : " + str(self.fitness)

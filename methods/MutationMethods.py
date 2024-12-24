@@ -5,7 +5,7 @@ from protocols.IndividualProtocol import IndividualProtocol
 
 class MutationMethods:
 	@staticmethod
-	def swap_mutation(individual: IndividualProtocol) -> None:
+	def swap(individual: IndividualProtocol) -> None:
 		"""
 		Apply swap mutation to the individual.
 		:param individual: The individual

@@ -16,9 +16,9 @@ MOCK_INDIVIDUAL1 = MockIndividual(np.array([1, 2, 3, 6, 5, 4]), MOCK_DISTANCE_MA
 
 class TestMutationMethods(unittest.TestCase):
 	@patch('numpy.random.choice')
-	def test_swap_mutation(self, mock_choice):
+	def test_swap(self, mock_choice):
 		mock_choice.return_value = 2, 4
-		MutationMethods.swap_mutation(MOCK_INDIVIDUAL1)
+		MutationMethods.swap(MOCK_INDIVIDUAL1)
 		self.assertEqual(MOCK_INDIVIDUAL1.cycle.tolist(), [1, 2, 5, 6, 3, 4])
 
 
