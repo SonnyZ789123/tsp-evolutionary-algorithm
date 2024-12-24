@@ -37,5 +37,4 @@ class EvolutionaryAlgorithm:
 			self._offsprings.append(offspring2)
 
 	def elimination(self) -> None:
-		new_individuals = EliminationMethods.age_based(self.population, self._offsprings)
-		self.population.individuals = new_individuals
+		EliminationMethods.age_based(self.population, self._offsprings)
