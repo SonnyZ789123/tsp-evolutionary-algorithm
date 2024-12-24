@@ -3,6 +3,10 @@ class Initialization:
 	max_iterations: int = 100
 
 
+class Convergence:
+	diff_mean_best_threshold: float = 0.01
+
+
 class Selection:
 	k: int = 1
 
@@ -21,6 +25,7 @@ class Elimination:
 
 class Settings:
 	initialization: Initialization = Initialization()
+	convergence: Convergence = Convergence()
 	selection: Selection = Selection()
 	mutation: Mutation = Mutation()
 	recombination: Recombination = Recombination()

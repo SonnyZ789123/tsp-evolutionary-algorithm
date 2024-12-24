@@ -6,6 +6,11 @@ class InitializationProtocol(Protocol):
 	max_iterations: int
 
 
+class ConvergenceProtocol(Protocol):
+	diff_mean_best_threshold: float
+	""" The threshold for difference between mean and best fitness, between 0 and 1. """
+
+
 class SelectionProtocol(Protocol):
 	k: int
 
@@ -25,6 +30,7 @@ class EliminationProtocol(Protocol):
 
 class SettingsProtocol(Protocol):
 	initialization: InitializationProtocol
+	convergence: ConvergenceProtocol
 	selection: SelectionProtocol
 	mutation: MutationProtocol
 	recombination: RecombinationProtocol

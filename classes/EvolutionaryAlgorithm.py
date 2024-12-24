@@ -28,7 +28,8 @@ class EvolutionaryAlgorithm:
 		self._iteration += 1
 		if self._iteration >= self.settings.initialization.max_iterations:
 			return True
-		if ConvergenceMethods.difference_mean_and_best_fitness(self.population, 0.01):
+		if ConvergenceMethods.difference_mean_and_best_fitness(self.population,
+															   self.settings.convergence.diff_mean_best_threshold):
 			return True
 		return False
 
