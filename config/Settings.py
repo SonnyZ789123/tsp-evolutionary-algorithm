@@ -8,7 +8,7 @@ class Selection:
 
 
 class Mutation:
-	pass
+	alpha: float = 0.05
 
 
 class Recombination:

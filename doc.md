@@ -2,7 +2,7 @@
 
 Initialization -> loop(Selection -> Variation -> Evaluation) -> Termination
 
-Variation = Crossover, Mutation
+Variation = Mutation -> Recombination
 
 # Representation
 

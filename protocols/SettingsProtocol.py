@@ -11,7 +11,7 @@ class SelectionProtocol(Protocol):
 
 
 class MutationProtocol(Protocol):
-	...
+	alpha: float
 
 
 class RecombinationProtocol(Protocol):

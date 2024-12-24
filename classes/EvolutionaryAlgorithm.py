@@ -1,3 +1,5 @@
+import random
+
 from classes.Individual import Individual
 from classes.Population import Population
 from config.Settings import Settings
@@ -27,6 +29,11 @@ class EvolutionaryAlgorithm:
 
 	def select(self) -> Individual:
 		return SelectionMethods.random(self.population)
+
+	def mutation(self):
+		for individual in self.population.individuals:
+			if random.random() > self.settings.mutation.alpha:
+				individual.mutate()
 
 	def recombination(self) -> None:
 		for _ in range(self.settings.initialization.population_size // 2):

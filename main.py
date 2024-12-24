@@ -16,6 +16,7 @@ def solve_tsp(distance_matrix: DistanceMatrixProtocol):
 
 	while not evolutionary_algorithm.converged:
 		evolutionary_algorithm.select()
+		evolutionary_algorithm.mutation()
 		evolutionary_algorithm.recombination()
 		evolutionary_algorithm.elimination()
 
