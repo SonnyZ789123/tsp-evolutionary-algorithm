@@ -1,9 +1,7 @@
-import math
 from typing import List
 
 import numpy as np
 
-from config.custom_types import Cycle
 from protocols.DistanceMatrixProtocol import DistanceMatrixProtocol
 from protocols.IndividualProtocol import IndividualProtocol
 from classes.Individual import Individual
@@ -30,7 +28,7 @@ class InitializationMethods:
 
 		while len(available) > 0:
 			# Valid next city if there is a path from the previous city that is not infinity
-			valid_next_cities = [i for i in available if distance_matrix.value[cycle[-1], i] != math.inf]
+			valid_next_cities = [i for i in available if distance_matrix.value[cycle[-1], i] != -1]
 
 			if len(valid_next_cities) == 0:
 				return InitializationMethods.generate_random_valid_individual(distance_matrix)
@@ -40,7 +38,7 @@ class InitializationMethods:
 			available.remove(valid_next_cities[index])
 
 		# Check that there is a path between the last and first picked city
-		if distance_matrix.value[cycle[-1], cycle[0]] != math.inf:
+		if distance_matrix.value[cycle[-1], cycle[0]] != -1:
 			assert len(cycle) == cycle_length
 			return Individual(np.array(cycle), distance_matrix)
 

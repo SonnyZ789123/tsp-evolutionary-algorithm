@@ -1,5 +1,3 @@
-import math
-
 from config.custom_types import Cycle
 from protocols.DistanceMatrixProtocol import DistanceMatrixProtocol
 
@@ -19,7 +17,7 @@ def is_valid_cycle(cycle: Cycle, distance_matrix: DistanceMatrixProtocol) -> boo
 
 	available = list(range(cycle_length))
 	for i in range(cycle_length):
-		if distance_matrix.value[cycle[i], cycle[(i + 1) % cycle_length]] == math.inf:
+		if distance_matrix.value[cycle[i], cycle[(i + 1) % cycle_length]] == -1:
 			return False
 		if cycle[i] not in available:
 			return False

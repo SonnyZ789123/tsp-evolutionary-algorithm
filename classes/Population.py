@@ -9,6 +9,9 @@ class Population:
 	individuals: list[IndividualProtocol]
 
 	def __init__(self, size: int, distance_matrix: DistanceMatrixProtocol):
+		# replace every occurrence of "Inf" with -1
+		distance_matrix.value[distance_matrix.value == float('inf')] = -1
+
 		self.size = size
 		self.distance_matrix = distance_matrix
 		self.individuals = InitializationMethods.generate_random_valid_population(size, distance_matrix)
