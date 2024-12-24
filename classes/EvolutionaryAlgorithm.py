@@ -34,7 +34,7 @@ class EvolutionaryAlgorithm:
 		return False
 
 	def select(self) -> Individual:
-		return SelectionMethods.random(self.population)
+		return SelectionMethods.k_tournament(self.population, self.settings.selection.k_tournament)
 
 	def recombination(self) -> None:
 		self._offsprings = []

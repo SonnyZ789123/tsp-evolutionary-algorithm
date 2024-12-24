@@ -8,7 +8,7 @@ class Convergence:
 
 
 class Selection:
-	k: int = 1
+	k_tournament: int = 5
 
 
 class Mutation:

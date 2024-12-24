@@ -9,7 +9,8 @@ from tests.MockIndividual import MockIndividual
 from tests.MockPopulation import MockPopulation
 
 MOCK_DISTANCE_MATRIX = DistanceMatrix(np.array([[1, 1], [1, 1]]))
-MOCK_INDIVIDUALS = [MockIndividual(np.array([1, 2]), MOCK_DISTANCE_MATRIX, lambda _: 1, lambda _: None) for _ in range(4)]
+MOCK_INDIVIDUALS = [MockIndividual(np.array([1, 2]), MOCK_DISTANCE_MATRIX, lambda _: 1, lambda _: None) for _ in
+					range(4)]
 
 
 class TestSelectionMethods(unittest.TestCase):

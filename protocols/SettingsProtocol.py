@@ -12,7 +12,8 @@ class ConvergenceProtocol(Protocol):
 
 
 class SelectionProtocol(Protocol):
-	k: int
+	k_tournament: int
+	""" The number of individuals in the tournament. """
 
 
 class MutationProtocol(Protocol):

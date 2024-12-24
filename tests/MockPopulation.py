@@ -11,3 +11,12 @@ class MockPopulation:
 		self.size = len(individuals)
 		self.distance_matrix = distance_matrix
 		self.individuals = individuals
+
+	def mean_fitness(self) -> float:
+		pass
+
+	def best_fitness(self) -> float:
+		pass
+
+	def best_individual(self) -> IndividualProtocol:
+		pass
