@@ -1,8 +1,11 @@
+from warnings import deprecated
+
 from protocols.PopulationProtocol import PopulationProtocol
 
 
 class ConvergenceMethods:
 	@staticmethod
+	@deprecated
 	def difference_mean_and_best_fitness(population: PopulationProtocol, threshold: float) -> bool:
 		"""
 		Checks if the mean fitness and the best fitness are within a certain threshold, after normalizing.

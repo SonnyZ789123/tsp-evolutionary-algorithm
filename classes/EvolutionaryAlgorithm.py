@@ -36,11 +36,6 @@ class EvolutionaryAlgorithm:
 	def select(self) -> Individual:
 		return SelectionMethods.random(self.population)
 
-	def mutation(self):
-		for individual in self._offsprings:
-			if random.random() < self.settings.mutation.alpha:
-				individual.mutate()
-
 	def recombination(self) -> None:
 		self._offsprings = []
 		for _ in range(self.settings.initialization.population_size):
@@ -48,6 +43,11 @@ class EvolutionaryAlgorithm:
 			parent2 = self.select()
 			offspring = RecombinationMethods.deterministic_best_parent(parent1, parent2)
 			self._offsprings.append(offspring)
+
+	def mutation(self):
+		for individual in self._offsprings:
+			if random.random() < self.settings.mutation.alpha:
+				individual.mutate()
 
 	def elimination(self) -> None:
 		EliminationMethods.age_based(self.population, self._offsprings)
