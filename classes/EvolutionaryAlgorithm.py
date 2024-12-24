@@ -32,7 +32,7 @@ class EvolutionaryAlgorithm:
 		for _ in range(self.settings.initialization.population_size // 2):
 			parent1 = self.select()
 			parent2 = self.select()
-			(offspring1, offspring2) = RecombinationMethods.partially_mapped_crossover(parent1, parent2)
+			(offspring1, offspring2) = RecombinationMethods.deterministic_best_parent(parent1, parent2)
 			self._offsprings.append(offspring1)
 			self._offsprings.append(offspring2)
 
