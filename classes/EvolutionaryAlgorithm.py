@@ -28,8 +28,8 @@ class EvolutionaryAlgorithm:
 		self._iteration += 1
 		if self._iteration >= self.settings.initialization.max_iterations:
 			return True
-		# if ConvergenceMethods.variance_fitness(self.population, self.settings.convergence.var_fitness_threshold):
-		# 	return True
+		if ConvergenceMethods.variance_fitness(self.population, self.settings.convergence.var_fitness_threshold):
+			return True
 		return False
 
 	def select(self) -> Individual:

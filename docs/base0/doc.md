@@ -26,6 +26,7 @@ class Elimination:
 	pass
 ```
 
+- tsp: 50
 - initialization: `generate_random_valid_population`
 - convergence: `difference_mean_and_best_fitness`
 - selection: `random`
