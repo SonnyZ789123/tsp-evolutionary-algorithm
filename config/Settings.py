@@ -5,10 +5,11 @@ class Initialization:
 
 class Convergence:
 	diff_mean_best_threshold: float = 0.01
+	var_fitness_threshold: float = 0.01
 
 
 class Selection:
-	k_tournament: int = 5
+	k_tournament: int = 3
 
 
 class Mutation:
