@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-from classes.DistanceMatrix import DistanceMatrix
+from config.custom_types import DistanceMatrix
 from protocols.IndividualProtocol import IndividualProtocol
 from protocols.PopulationProtocol import PopulationProtocol
 from tests.MockIndividual import MockIndividual
@@ -10,9 +10,9 @@ from tests.MockIndividual import MockIndividual
 from methods.EliminationMethods import EliminationMethods
 from tests.MockPopulation import MockPopulation
 
-MOCK_DISTANCE_MATRIX = DistanceMatrix(np.array([[1, 1, 1],
-												[1, 1, 1],
-												[1, 1, 1]]))
+MOCK_DISTANCE_MATRIX: DistanceMatrix = np.array([[1, 1, 1],
+												 [1, 1, 1],
+												 [1, 1, 1]])
 POPULATION_SIZE = 10
 MOCK_INDIVIDUALS = [MockIndividual(np.array([1, 2, 3]), MOCK_DISTANCE_MATRIX, lambda _: 1, lambda _: None) for _ in
 					range(POPULATION_SIZE)]

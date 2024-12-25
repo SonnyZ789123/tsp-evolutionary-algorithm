@@ -1,16 +1,16 @@
+from config.custom_types import DistanceMatrix
 from methods.InitializationMethods import InitializationMethods
-from protocols.DistanceMatrixProtocol import DistanceMatrixProtocol
 from protocols.IndividualProtocol import IndividualProtocol
 
 
 class Population:
 	size: int
-	distance_matrix: DistanceMatrixProtocol
+	distance_matrix: DistanceMatrix
 	individuals: list[IndividualProtocol]
 
-	def __init__(self, size: int, distance_matrix: DistanceMatrixProtocol):
+	def __init__(self, size: int, distance_matrix: DistanceMatrix):
 		# replace every occurrence of "Inf" with -1
-		distance_matrix.value[distance_matrix.value == float('inf')] = -1
+		distance_matrix[distance_matrix == float('inf')] = -1
 
 		self.size = size
 		self.distance_matrix = distance_matrix

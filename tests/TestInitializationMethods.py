@@ -2,16 +2,16 @@ import unittest
 
 import numpy as np
 
-from classes.DistanceMatrix import DistanceMatrix
+from config.custom_types import DistanceMatrix
 from methods.InitializationMethods import InitializationMethods
 from utils.cycle_utils import is_valid_cycle
 
-MOCK_DISTANCE_MATRIX = DistanceMatrix(np.array([[-1, 1, 1, 1, 1, -1],
-												[1, -1, 1, 1, -1, 1],
-												[1, -1, -1, 1, 1, 1],
-												[1, 1, 1, -1, 1, 1],
-												[1, -1, 1, 1, -1, 1],
-												[1, 1, 1, 1, -1, -1]]))
+MOCK_DISTANCE_MATRIX: DistanceMatrix = np.array([[-1, 1, 1, 1, 1, -1],
+												 [1, -1, 1, 1, -1, 1],
+												 [1, -1, -1, 1, 1, 1],
+												 [1, 1, 1, -1, 1, 1],
+												 [1, -1, 1, 1, -1, 1],
+												 [1, 1, 1, 1, -1, -1]])
 
 
 class TestInitializationMethods(unittest.TestCase):

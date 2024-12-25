@@ -1,10 +1,10 @@
-from protocols.DistanceMatrixProtocol import DistanceMatrixProtocol
+from config.custom_types import DistanceMatrix
 from protocols.IndividualProtocol import IndividualProtocol
 
 
 class MockPopulation:
 	size: int
-	distance_matrix: DistanceMatrixProtocol
+	distance_matrix: DistanceMatrix
 	individuals: list[IndividualProtocol]
 
 	def __init__(self, distance_matrix, individuals: list[IndividualProtocol]):

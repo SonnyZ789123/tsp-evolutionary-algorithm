@@ -1,18 +1,17 @@
 from typing import Callable
 
-from protocols.DistanceMatrixProtocol import DistanceMatrixProtocol
 from protocols.IndividualProtocol import IndividualProtocol
-from config.custom_types import Cycle
+from config.custom_types import Cycle, DistanceMatrix
 
 
 class MockIndividual:
 	cycle: Cycle
-	distance_matrix: DistanceMatrixProtocol
+	distance_matrix: DistanceMatrix
 	_fitness: float
 	mock_fitness_method: Callable[[IndividualProtocol], float]
 	mock_mutate_method: Callable[[IndividualProtocol], None]
 
-	def __init__(self, cycle: Cycle, distance_matrix: DistanceMatrixProtocol,
+	def __init__(self, cycle: Cycle, distance_matrix: DistanceMatrix,
 				 mock_fitness_method: Callable[[IndividualProtocol], float],
 				 mock_mutate_method: Callable[[IndividualProtocol], None]):
 		self.cycle = cycle

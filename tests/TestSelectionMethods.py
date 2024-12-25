@@ -2,16 +2,15 @@ import unittest
 from unittest.mock import patch
 import numpy as np
 
+from config.custom_types import DistanceMatrix
 from methods.SelectionMethods import SelectionMethods
 from protocols.PopulationProtocol import PopulationProtocol
-from classes.DistanceMatrix import DistanceMatrix
 from tests.MockIndividual import MockIndividual
 from tests.MockPopulation import MockPopulation
 
-MOCK_DISTANCE_MATRIX = DistanceMatrix(np.array([[1, 1], [1, 1]]))
+MOCK_DISTANCE_MATRIX: DistanceMatrix = np.array([[1, 1], [1, 1]])
 MOCK_INDIVIDUALS = [MockIndividual(np.array([1, 2]), MOCK_DISTANCE_MATRIX, lambda _: 1, lambda _: None) for _ in
-					range(4)]
-
+range(4)]
 
 class TestSelectionMethods(unittest.TestCase):
 	mock_population: PopulationProtocol

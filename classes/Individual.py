@@ -1,15 +1,14 @@
-from config.custom_types import Cycle
+from config.custom_types import Cycle, DistanceMatrix
 from methods.FitnessMethods import FitnessMethods
 from methods.MutationMethods import MutationMethods
-from protocols.DistanceMatrixProtocol import DistanceMatrixProtocol
 
 
 class Individual:
 	cycle: Cycle
-	distance_matrix: DistanceMatrixProtocol
+	distance_matrix: DistanceMatrix
 	_fitness: float
 
-	def __init__(self, cycle: Cycle, distance_matrix: DistanceMatrixProtocol):
+	def __init__(self, cycle: Cycle, distance_matrix: DistanceMatrix):
 		self.cycle = cycle
 		self.distance_matrix = distance_matrix
 

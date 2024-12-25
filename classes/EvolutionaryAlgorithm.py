@@ -3,11 +3,11 @@ import random
 from classes.Individual import Individual
 from classes.Population import Population
 from config.Settings import Settings
+from config.custom_types import DistanceMatrix
 from methods.EliminationMethods import EliminationMethods
 from methods.RecombinationMethods import RecombinationMethods
 from methods.SelectionMethods import SelectionMethods
 from methods.ConvergenceMethods import ConvergenceMethods
-from protocols.DistanceMatrixProtocol import DistanceMatrixProtocol
 from protocols.IndividualProtocol import IndividualProtocol
 from protocols.PopulationProtocol import PopulationProtocol
 from protocols.SettingsProtocol import SettingsProtocol
@@ -20,7 +20,7 @@ class EvolutionaryAlgorithm:
 	_offsprings: list[IndividualProtocol] = []
 	_converged: bool
 
-	def __init__(self, distance_matrix: DistanceMatrixProtocol):
+	def __init__(self, distance_matrix: DistanceMatrix):
 		self.population = Population(self.settings.initialization.population_size, distance_matrix)
 
 	@property
