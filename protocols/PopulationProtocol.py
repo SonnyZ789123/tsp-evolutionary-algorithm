@@ -17,3 +17,9 @@ class PopulationProtocol(Protocol):
 
 	def best_individual(self) -> IndividualProtocol:
 		...
+
+	def variance_fitness(self) -> float:
+		...
+
+	def valid_invalid_individual_proportion(self) -> tuple[int, int]:
+		...

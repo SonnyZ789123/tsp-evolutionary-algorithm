@@ -3,9 +3,10 @@ from typing import List, cast
 import numpy as np
 from numpy.typing import NDArray
 
-from config.custom_types import DistanceMatrix, InitializationHeuristic
+from config.custom_types import DistanceMatrix, InitializationHeuristic, INFINITY_REPRESENTATION
 from protocols.IndividualProtocol import IndividualProtocol
 from classes.Individual import Individual
+from utils.cycle_utils import is_valid_cycle, get_cycle_distances
 
 
 class Heuristics:
@@ -19,13 +20,14 @@ class Heuristics:
 		Heuristic that selects the nearest neighbour to the given city.
 		:return: The index of the nearest neighbour, or -1 if there are no available cities.
 		"""
-		distances: NDArray[np.float64] = distance_matrix[city]
+		distances: NDArray[float] = distance_matrix[city]
 		# Get the indices of the available cities
-		available_distances = [(city, float(distances[city])) for city in available_cities if distances[city] != -1]
+		available_distances = [(next_city, distances[next_city]) for next_city in available_cities if
+							   distances[next_city] != INFINITY_REPRESENTATION]
 		if len(available_distances) == 0:
 			return -1
 		# Find the index of the minimum distance
-		next_city_with_min_distance, _ = min(available_distances, key=lambda x: x[1])
+		next_city_with_min_distance, distance = min(available_distances, key=lambda x: x[1])
 		return next_city_with_min_distance
 
 
@@ -50,7 +52,7 @@ class InitializationMethods:
 
 		while len(available) > 0:
 			# Valid next city if there is a path from the previous city that is not infinity
-			valid_next_cities = [i for i in available if distance_matrix[cycle[-1], i] != -1]
+			valid_next_cities = [i for i in available if distance_matrix[cycle[-1], i] != INFINITY_REPRESENTATION]
 
 			if len(valid_next_cities) == 0:
 				return InitializationMethods.generate_random_valid_individual(distance_matrix)
@@ -60,12 +62,12 @@ class InitializationMethods:
 			available.remove(valid_next_cities[index])
 
 		# Check that there is a path between the last and first picked city
-		if distance_matrix[cycle[-1], cycle[0]] != -1:
-			assert len(cycle) == cycle_length
-			return Individual(np.array(cycle), distance_matrix)
+		if distance_matrix[cycle[-1], cycle[0]] == INFINITY_REPRESENTATION:
+			# If there is no path between the last and first picked city, try again
+			return InitializationMethods.generate_random_valid_individual(distance_matrix)
 
-		# If there is no path between the last and first picked city, try again
-		return InitializationMethods.generate_random_valid_individual(distance_matrix)
+		assert len(cycle) == cycle_length
+		return Individual(np.array(cycle), distance_matrix)
 
 	@staticmethod
 	def generate_random_valid_population(size: int, distance_matrix: DistanceMatrix) -> List[
@@ -104,6 +106,12 @@ class InitializationMethods:
 			cycle.append(next_city)
 			available.remove(next_city)
 
+		# Check that there is a path between the last and first picked city
+		if distance_matrix[cycle[-1], cycle[0]] == INFINITY_REPRESENTATION:
+			# If there is no path between the last and first picked city, try again
+			return InitializationMethods.generate_greedy_individual(distance_matrix, heuristic)
+
+		assert len(cycle) == cycle_length
 		return Individual(np.array(cycle), distance_matrix)
 
 	@staticmethod

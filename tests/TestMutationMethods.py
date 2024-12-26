@@ -3,13 +3,13 @@ from unittest.mock import patch
 
 import numpy as np
 
-from config.custom_types import DistanceMatrix
+from config.custom_types import DistanceMatrix, INFINITY_REPRESENTATION
 from protocols.IndividualProtocol import IndividualProtocol
 from tests.MockIndividual import MockIndividual
 
 from methods.MutationMethods import MutationMethods
 
-MOCK_DISTANCE_MATRIX: DistanceMatrix = np.array([[1, 1, 1, 1, 1, -1],
+MOCK_DISTANCE_MATRIX: DistanceMatrix = np.array([[1, 1, 1, 1, 1, INFINITY_REPRESENTATION],
 												 [1, 1, 1, 1, 1, 1],
 												 [1, 1, 1, 1, 1, 1],
 												 [1, 1, 1, 1, 1, 1],

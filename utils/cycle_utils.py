@@ -16,7 +16,7 @@ def is_valid_cycle(cycle: Cycle, distance_matrix: DistanceMatrix) -> bool:
 
 	available = list(range(cycle_length))
 	for i in range(cycle_length):
-		if distance_matrix[cycle[i], cycle[(i + 1) % cycle_length]] == -1:
+		if distance_matrix[cycle[i], cycle[(i + 1) % cycle_length]] == INFINITY_REPRESENTATION:
 			return False
 		if cycle[i] not in available:
 			return False

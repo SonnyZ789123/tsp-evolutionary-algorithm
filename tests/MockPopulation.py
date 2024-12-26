@@ -20,3 +20,9 @@ class MockPopulation:
 
 	def best_individual(self) -> IndividualProtocol:
 		pass
+
+	def variance_fitness(self) -> float:
+		pass
+
+	def valid_invalid_individual_proportion(self) -> tuple[int, int]:
+		pass
