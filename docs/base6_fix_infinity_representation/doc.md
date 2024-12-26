@@ -33,6 +33,7 @@ class Elimination:
 - mutation: `reverse_subtour`
 - elimination: `merged_fitness_based`
 - fitness: `negative_of_length`
+- Problem size: 50
 - Elapsed time for solving TSP: 20.19 seconds
 - Best individual cycle length: 25821
 

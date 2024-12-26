@@ -33,6 +33,7 @@ class Elimination:
 - mutation: `swap`
 - elimination: `merged_fitness_based`
 - fitness: `negative_of_length`
+- Problem size: 50
 - Elapsed time: 17.22 seconds
 
 The amount of iterations is around 1/3 of the previous base (20 instead of 60). The starting mean and best fitness is also a lot higher, starting mean fitness is 83 instead of 30.

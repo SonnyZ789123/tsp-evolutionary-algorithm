@@ -12,7 +12,8 @@ from utils.plotting import generate_plot, generate_log_plot
 
 def solve_tsp():
 	# Read distance matrix from file.
-	file = open("tour50.csv")
+	tour_name = "tour1000"
+	file = open(f"{tour_name}.csv")
 	distance_matrix: DistanceMatrix = np.loadtxt(file, delimiter=",")
 	file.close()
 
@@ -49,9 +50,12 @@ def solve_tsp():
 	iteration_numbers = list(range(len(mean_fitness_history)))
 	mean_fitness_history_rebased = [(i / 1000 + 110) for i in mean_fitness_history]
 	best_fitness_history_rebased = [(i / 1000 + 110) for i in best_fitness_history]
-	generate_plot(iteration_numbers, mean_fitness_history_rebased, y_label="Mean fitness/1000 + 110")
-	generate_plot(iteration_numbers, best_fitness_history_rebased, y_label="Best fitness/1000 + 110")
-	generate_log_plot(iteration_numbers, variance_fitness_history, y_label="Variance fitness")
+	generate_plot(iteration_numbers, mean_fitness_history_rebased, y_label="Mean fitness/1000 + 110",
+				  title=f"Mean fitness history for {tour_name}")
+	generate_plot(iteration_numbers, best_fitness_history_rebased, y_label="Best fitness/1000 + 110",
+				  title=f"Best fitness history for {tour_name}")
+	generate_log_plot(iteration_numbers, variance_fitness_history, y_label="Variance fitness",
+					  title=f"Variance fitness history for {tour_name}")
 	print(f"Best individual cycle length: {
 	get_cycle_length(evolutionary_algorithm.population.best_individual().cycle, distance_matrix):.0f}")
 	# print(f"Best individual cycle: {evolutionary_algorithm.population.best_individual().cycle}")
