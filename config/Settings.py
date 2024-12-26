@@ -1,5 +1,5 @@
 class Initialization:
-	population_size: int = 100
+	population_size: int = 500
 	max_iterations: int = 100
 
 
