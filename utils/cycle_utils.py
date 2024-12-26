@@ -1,5 +1,4 @@
-from config.custom_types import Cycle, DistanceMatrix
-from protocols.IndividualProtocol import IndividualProtocol
+from config.custom_types import Cycle, DistanceMatrix, INFINITY_REPRESENTATION
 
 
 def is_valid_cycle(cycle: Cycle, distance_matrix: DistanceMatrix) -> bool:
@@ -32,9 +31,6 @@ def get_cycle_length(cycle: Cycle, distance_matrix: DistanceMatrix) -> float:
 	for i in range(len(cycle)):
 		length += distance_matrix[cycle[i], cycle[(i + 1) % cycle_length]]
 
-	# Don't forget to go back to the beginning
-	length += distance_matrix[cycle[-1], cycle[0]]
-
 	return length
 
 
@@ -44,6 +40,5 @@ def get_cycle_distances(cycle: Cycle, distance_matrix: DistanceMatrix) -> list[f
 
 	for i in range(len(cycle)):
 		distances.append(round(float(distance_matrix[cycle[i], cycle[(i + 1) % cycle_length]]), 2))
-	distances.append(round(float(distance_matrix[cycle[-1], cycle[0]]), 2))
 
 	return distances
