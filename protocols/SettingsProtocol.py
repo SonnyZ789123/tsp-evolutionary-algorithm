@@ -29,7 +29,8 @@ class RecombinationProtocol(Protocol):
 
 
 class EliminationProtocol(Protocol):
-	...
+	mixed_elitism_proportion: float
+	""" The proportion of the population to keep in the next generation, between 0 and 1. """
 
 
 class SettingsProtocol(Protocol):

@@ -50,4 +50,5 @@ class EvolutionaryAlgorithm:
 				individual.mutate()
 
 	def elimination(self) -> None:
-		EliminationMethods.merged_fitness_based(self.population, self._offsprings)
+		EliminationMethods.mixed_elitist(self.population, self._offsprings,
+										 self.settings.elimination.mixed_elitism_proportion)

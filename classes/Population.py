@@ -3,7 +3,7 @@ import numpy as np
 from config.custom_types import DistanceMatrix, INFINITY_REPRESENTATION
 from methods.InitializationMethods import InitializationMethods, Heuristics
 from protocols.IndividualProtocol import IndividualProtocol
-from utils.cycle_utils import is_valid_cycle
+from utils.cycle_utils import is_valid_cycle, get_cycle_distances
 
 
 class Population:
