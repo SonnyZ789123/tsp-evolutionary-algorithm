@@ -6,7 +6,8 @@ import numpy as np
 from config.custom_types import DistanceMatrix
 from classes.EvolutionaryAlgorithm import EvolutionaryAlgorithm
 from protocols.EvolutionaryAlgorithmProtocol import EvolutionaryAlgorithmProtocol
-from utils.plotting import generate_plot, generate_log_plot
+from utils.cycle_utils import get_cycle_length, get_cycle_distances
+from utils.plotting import generate_plot
 
 
 def solve_tsp():
@@ -44,11 +45,16 @@ def solve_tsp():
 
 	# Plotting
 	iteration_numbers = list(range(len(mean_fitness_history)))
-	mean_fitness_history_rebased = [(i/1000 + 110) for i in mean_fitness_history]
-	best_fitness_history_rebased = [(i/1000 + 110) for i in best_fitness_history]
+	mean_fitness_history_rebased = [(i / 1000 + 110) for i in mean_fitness_history]
+	best_fitness_history_rebased = [(i / 1000 + 110) for i in best_fitness_history]
 	generate_plot(iteration_numbers, mean_fitness_history_rebased, y_label="Mean fitness/1000 + 110")
 	generate_plot(iteration_numbers, best_fitness_history_rebased, y_label="Best fitness/1000 + 110")
 	generate_plot(iteration_numbers, variance_fitness_history, y_label="Variance fitness")
+	print(f"Best individual cycle length: {
+	get_cycle_length(evolutionary_algorithm.population.best_individual().cycle, distance_matrix):.0f}")
+	print(f"Best individual cycle: {evolutionary_algorithm.population.best_individual().cycle}")
+	print(f"Best individual cycle distances: {
+	get_cycle_distances(evolutionary_algorithm.population.best_individual().cycle, distance_matrix)}")
 
 	return 0
 

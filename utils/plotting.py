@@ -11,7 +11,9 @@ def generate_plot(iterations: List[int], y: List[float], x_label="Iteration", y_
 	plt.grid()
 	plt.show()
 
-def generate_log_plot(iterations: List[int], y: List[float], x_label="Iteration", y_label="fitness", title="TSP Algorithm"):
+
+def generate_log_plot(iterations: List[int], y: List[float], x_label="Iteration", y_label="fitness",
+					  title="TSP Algorithm"):
 	plt.plot(iterations, y, marker='')
 	plt.title(title)
 	plt.xlabel(x_label)

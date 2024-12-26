@@ -24,9 +24,26 @@ def is_valid_cycle(cycle: Cycle, distance_matrix: DistanceMatrix) -> bool:
 		available.remove(int(cycle[i]))
 	return True
 
+
 def get_cycle_length(cycle: Cycle, distance_matrix: DistanceMatrix) -> float:
 	length = 0
+	cycle_length = len(cycle)
 
 	for i in range(len(cycle)):
-		length += distance_matrix[cycle[i], cycle[(i + 1) % len(cycle)]]
+		length += distance_matrix[cycle[i], cycle[(i + 1) % cycle_length]]
+
+	# Don't forget to go back to the beginning
+	length += distance_matrix[cycle[-1], cycle[0]]
+
 	return length
+
+
+def get_cycle_distances(cycle: Cycle, distance_matrix: DistanceMatrix) -> list[float]:
+	distances = []
+	cycle_length = len(cycle)
+
+	for i in range(len(cycle)):
+		distances.append(round(float(distance_matrix[cycle[i], cycle[(i + 1) % cycle_length]]), 2))
+	distances.append(round(float(distance_matrix[cycle[-1], cycle[0]]), 2))
+
+	return distances
