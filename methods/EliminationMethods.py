@@ -7,8 +7,16 @@ from protocols.PopulationProtocol import PopulationProtocol
 class EliminationMethods:
 	@staticmethod
 	def age_based(population: PopulationProtocol, offsprings: List[IndividualProtocol]) -> None:
-		assert population.size == len(offsprings)
-		population.individuals = offsprings
+		"""
+		Only keep the offsprings.
+		:param population: The population
+		:param offsprings: The offsprings
+		"""
+		if len(offsprings) > population.size:
+			offsprings.sort(key=lambda individual: individual.fitness)
+			population.individuals = offsprings[:population.size]
+		else:
+			population.individuals = offsprings
 
 	@staticmethod
 	def merged_fitness_based(population: PopulationProtocol, offsprings: List[IndividualProtocol]) -> None:
