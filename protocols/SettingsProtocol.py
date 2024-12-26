@@ -8,8 +8,8 @@ class InitializationProtocol(Protocol):
 
 
 class ConvergenceProtocol(Protocol):
-	diff_mean_best_threshold: float
-	""" The threshold for difference between mean and best fitness, between 0 and 1. """
+	# diff_mean_best_threshold: float
+	# """ The threshold for difference between mean and best fitness, between 0 and 1. """
 	var_fitness_threshold: float
 	""" The threshold for variance of fitness, between 0 and 1. """
 

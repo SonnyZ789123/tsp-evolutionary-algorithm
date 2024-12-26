@@ -4,7 +4,6 @@ class Initialization:
 
 
 class Convergence:
-	diff_mean_best_threshold: float = 0.01
 	var_fitness_threshold: float = 0.01
 
 
