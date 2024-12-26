@@ -1,8 +1,8 @@
-# Base 7 - Testing big problems
+# Base 8 - Fix Sort Order
 
 ```Python
 class Initialization:
-	population_size: int = 100
+	population_size: int = 500
 	max_iterations: int = 100
 
 
@@ -23,7 +23,7 @@ class Recombination:
 
 
 class Elimination:
-	pass
+	mixed_elitism_proportion: float = 0.5
 ```
 
 - initialization: 1 `generate_greedy_population` with `nearest_neighbour` and rest `generate_random_valid_population`
@@ -31,7 +31,8 @@ class Elimination:
 - selection: `k_tournament`
 - recombination: `order_crossover`
 - mutation: `reverse_subtour`
-- elimination: `merged_fitness_based`
+- elimination: `age_based`
 - fitness: `negative_of_length`
-
-Most of the time the best solution is not changed in the first iteration, which is probably the greedy generated one. This is probably because of lack of diversity, in the elimination method because I currently take only the best ones. I can also try to add fitness sharing.
+- Problem size: 50
+- Elapsed time for solving TSP: 18.71 seconds
+- Best individual cycle length: 27130
