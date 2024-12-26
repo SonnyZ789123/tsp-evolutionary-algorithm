@@ -6,7 +6,6 @@ from config.custom_types import DistanceMatrix
 from classes.EvolutionaryAlgorithm import EvolutionaryAlgorithm
 from protocols.EvolutionaryAlgorithmProtocol import EvolutionaryAlgorithmProtocol
 from utils.plotting import generate_plot
-from utils.utils import normalize_list
 
 
 def solve_tsp():
@@ -37,10 +36,10 @@ def solve_tsp():
 
 	# Plotting
 	iteration_numbers = list(range(len(mean_fitness_history)))
-	mean_fitness_history_normalized = normalize_list(mean_fitness_history)
-	best_fitness_history_normalized = normalize_list(best_fitness_history)
-	generate_plot(iteration_numbers, mean_fitness_history_normalized, y_label="Mean fitness")
-	generate_plot(iteration_numbers, best_fitness_history_normalized, y_label="Best fitness")
+	mean_fitness_history_rebased = [i + 110000 for i in mean_fitness_history]
+	best_fitness_history_rebased = [i + 110000 for i in best_fitness_history]
+	generate_plot(iteration_numbers, mean_fitness_history_rebased, y_label="Mean fitness + 110000")
+	generate_plot(iteration_numbers, best_fitness_history_rebased, y_label="Best fitness + 110000")
 	generate_plot(iteration_numbers, variance_fitness_history, y_label="Variance fitness")
 
 	return 0
