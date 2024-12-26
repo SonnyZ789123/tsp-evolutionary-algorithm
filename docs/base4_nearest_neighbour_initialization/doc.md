@@ -31,7 +31,7 @@ class Elimination:
 - selection: `k_tournament`
 - recombination: `order_crossover`
 - mutation: `swap`
-- elimination: `age_based` or `merged_fitness_based`
+- elimination: `merged_fitness_based`
 - fitness: `negative_of_length`
 - Elapsed time: 17.22 seconds
 
