@@ -14,10 +14,10 @@ class Population:
 
 		self.size = size
 		self.distance_matrix = distance_matrix
-		random_individuals = InitializationMethods.generate_greedy_population(size // 2, distance_matrix,
+		greedy_individuals = InitializationMethods.generate_greedy_population(size // 2, distance_matrix,
 																			  Heuristics.nearest_neighbour)
-		greedy_individuals = InitializationMethods.generate_random_valid_population(size // 2, distance_matrix)
-		self.individuals = random_individuals + greedy_individuals
+		random_individuals = InitializationMethods.generate_random_valid_population(size // 2, distance_matrix)
+		self.individuals = greedy_individuals + random_individuals
 
 	def mean_fitness(self) -> float:
 		return sum([individual.fitness for individual in self.individuals]) / self.size
