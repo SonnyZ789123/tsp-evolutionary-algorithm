@@ -113,3 +113,36 @@ To combat this problem, there are several options:
 - Fixed tradeoff or scalarization
 - island model
 - Pareto front approximation
+
+# Hints 
+
+- I reduced the population size (it s important for the big problems)
+- replace inf by a big value
+- I added fitness sharing for elimination
+- keep k tournaments for selection
+- I initialize 50% of the edges in a greedy manner meaning i choose the best edge from the remaining ones
+- I added a deterministic recombination meaning i have 2 parents p1 and p2 and say i am in node x, i choose the best successor from the 2 options in the parents
+- I balance that recombination with ox1 or what is the name
+
+# Notes from Q&A2
+
+LSO - best als een of andere random heuristic, goedkoop
+
+Voor een goede initializatie helpt het om verzameling v technieken te gebruiken
+Deels random wel best zodat geen local optima terecht komt (leidt tot clustering)
+Dus aantal individuen via bepaalde heuristic, aantal op nog een andere...
+
+Doel is echt om goede regio's te identificeren en in te zetten op exploratory deel
+
+LSO dient niet echt om goede individuals nog beter te maken, maar eerder om richting te geven aan die dat initieel miss slecht lijken te zitten
+
+Kan bij init
+Maar moet dan deterministisch op iedereen
+Zodat iedereen verbeterd anders verspilde computation voor de rest dat weggeworpen wordt
+
+Waar toepassen? 
+•⁠  ⁠Bij init, zie eerder
+•⁠  ⁠Kan agressieve mutatie doen en dan toepassen op de gemuteerde om de slechte opties competitief te maken. In algoritme zelf, probabilistisch uniform toepassen dus op de gemuteerde expliciet of met kleine kans
+
+Probleem van geclusterde fitness values -> elimination stap moet diversiteit invoeren
+(Kan ook met selection deels om clustering te voorkomen)
