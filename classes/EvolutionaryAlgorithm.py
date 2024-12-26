@@ -40,8 +40,9 @@ class EvolutionaryAlgorithm:
 		for _ in range(self.settings.initialization.population_size):
 			parent1 = self.select()
 			parent2 = self.select()
-			offspring = RecombinationMethods.deterministic_best_parent(parent1, parent2)
-			self._offsprings.append(offspring)
+			offspring1, offspring2 = RecombinationMethods.order_crossover(parent1, parent2)
+			self._offsprings.append(offspring1)
+			self._offsprings.append(offspring2)
 
 	def mutation(self):
 		for individual in self._offsprings:
@@ -49,4 +50,4 @@ class EvolutionaryAlgorithm:
 				individual.mutate()
 
 	def elimination(self) -> None:
-		EliminationMethods.age_based(self.population, self._offsprings)
+		EliminationMethods.merged_fitness_based(self.population, self._offsprings)
