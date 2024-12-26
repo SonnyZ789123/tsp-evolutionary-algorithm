@@ -8,8 +8,8 @@ from tests.MockIndividual import MockIndividual
 from methods.FitnessMethods import FitnessMethods
 
 MOCK_DISTANCE_MATRIX: DistanceMatrix = np.array([[1, 2, 1],
-								 [9, 3, 2],
-								 [1, 5, 4]])
+												 [9, 3, 2],
+												 [1, 5, 4]])
 MOCK_INDIVIDUAL1 = MockIndividual(np.array([1, 0, 2]), MOCK_DISTANCE_MATRIX, lambda _: -1, lambda _: None)
 MOCK_INDIVIDUAL2 = MockIndividual(np.array([0, 1, 2]), MOCK_DISTANCE_MATRIX, lambda _: -1, lambda _: None)
 

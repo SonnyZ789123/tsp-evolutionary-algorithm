@@ -1,4 +1,5 @@
 from config.custom_types import Cycle, DistanceMatrix
+from protocols.IndividualProtocol import IndividualProtocol
 
 
 def is_valid_cycle(cycle: Cycle, distance_matrix: DistanceMatrix) -> bool:
@@ -22,3 +23,10 @@ def is_valid_cycle(cycle: Cycle, distance_matrix: DistanceMatrix) -> bool:
 			return False
 		available.remove(int(cycle[i]))
 	return True
+
+def get_cycle_length(cycle: Cycle, distance_matrix: DistanceMatrix) -> float:
+	length = 0
+
+	for i in range(len(cycle)):
+		length += distance_matrix[cycle[i], cycle[(i + 1) % len(cycle)]]
+	return length

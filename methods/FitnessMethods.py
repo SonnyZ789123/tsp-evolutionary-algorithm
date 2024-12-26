@@ -1,4 +1,5 @@
 from protocols.IndividualProtocol import IndividualProtocol
+from utils.cycle_utils import get_cycle_length
 
 
 class FitnessMethods:
@@ -8,10 +9,4 @@ class FitnessMethods:
 		Calculate the fitness of the individual as the negative of the length of the cycle.
 		:param individual: The individual
 		"""
-		distance_matrix = individual.distance_matrix
-		cycle = individual.cycle
-		length = 0
-
-		for i in range(len(cycle)):
-			length += distance_matrix[cycle[i], cycle[(i + 1) % len(cycle)]]
-		return -length
+		return -get_cycle_length(individual.cycle, individual.distance_matrix)
