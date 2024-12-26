@@ -1,3 +1,4 @@
+import time
 from typing import List
 
 import numpy as np
@@ -22,6 +23,9 @@ def solve_tsp():
 	best_fitness_history: List[float] = []
 	variance_fitness_history: List[float] = []
 
+	# Time the algorithm
+	start_time = time.time()
+
 	while not evolutionary_algorithm.converged:
 		evolutionary_algorithm.select()
 		evolutionary_algorithm.recombination()
@@ -33,6 +37,10 @@ def solve_tsp():
 		best_fitness_history.append(evolutionary_algorithm.population.best_fitness())
 		individuals_fitness = [individual.fitness for individual in evolutionary_algorithm.population.individuals]
 		variance_fitness_history.append(float(np.var(individuals_fitness)))
+
+	end_time = time.time()
+	elapsed_time = end_time - start_time
+	print(f"Elapsed time for solving TSP: {elapsed_time:.2f} seconds")
 
 	# Plotting
 	iteration_numbers = list(range(len(mean_fitness_history)))
