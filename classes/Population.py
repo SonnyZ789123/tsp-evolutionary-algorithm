@@ -1,5 +1,5 @@
 from config.custom_types import DistanceMatrix
-from methods.InitializationMethods import InitializationMethods
+from methods.InitializationMethods import InitializationMethods, Heuristics
 from protocols.IndividualProtocol import IndividualProtocol
 
 
@@ -14,7 +14,8 @@ class Population:
 
 		self.size = size
 		self.distance_matrix = distance_matrix
-		self.individuals = InitializationMethods.generate_random_valid_population(size, distance_matrix)
+		self.individuals = InitializationMethods.generate_greedy_population(size, distance_matrix,
+																			Heuristics.nearest_neighbour)
 
 	def mean_fitness(self) -> float:
 		return sum([individual.fitness for individual in self.individuals]) / self.size
