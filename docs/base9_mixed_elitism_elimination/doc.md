@@ -37,4 +37,8 @@ class Elimination:
 - Elapsed time for solving TSP: 17.78 seconds
 - Best individual cycle length: 26837
 
-Way quicker convergence than `age_based`, and keeps more diversity than `merged_fitness_based`. 
+Way quicker convergence than `age_based`, and keeps more diversity than `merged_fitness_based`.
+
+For problem size: 200
+- Elapsed time for solving TSP: 46.03 seconds
+- Best individual cycle length: 39955
