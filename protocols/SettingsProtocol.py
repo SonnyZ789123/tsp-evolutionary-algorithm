@@ -3,6 +3,7 @@ from typing import Protocol
 
 class InitializationProtocol(Protocol):
 	population_size: int
+	""" The size of the population, should be a positive even integer. """
 	max_iterations: int
 
 
