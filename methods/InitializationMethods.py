@@ -6,7 +6,6 @@ from numpy.typing import NDArray
 from config.custom_types import DistanceMatrix, InitializationHeuristic, INFINITY_REPRESENTATION
 from protocols.IndividualProtocol import IndividualProtocol
 from classes.Individual import Individual
-from utils.cycle_utils import is_valid_cycle, get_cycle_distances
 
 
 class Heuristics:

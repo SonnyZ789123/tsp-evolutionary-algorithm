@@ -38,3 +38,5 @@ class Elimination:
 - Best individual cycle length: 25821
 
 Note: increase in time could also be because of the additional calculating for the monitoring.
+
+**Because of the 50% greedy nearest neighbour initialization, the population is too optimized for that local optimum. In tests with many cities (500-1000), the best solution stayed the same or changed very little in the first iteration. I thought randomly picking the first city in the greedy method changed it enough but for example [2 3 4 5 1] is the same as [2 3 4 5 1 2].** 
