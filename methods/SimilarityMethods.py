@@ -5,21 +5,25 @@ from config.custom_types import Cycle
 
 class SimilarityMethods:
 	@staticmethod
-	def cycle_subtour_exponential(cycle1: Cycle, cycle2: Cycle) -> int:
+	def cycle_subtour_linear_streak(cycle1: Cycle, cycle2: Cycle) -> int:
 		"""
-		Calculate the cycle subtour exponential similarity between two cycles by actively looking for pieces of the that
-		are the same, and exponentially rewarding the similarity of long sub tours.
+		Calculate the cycle subtour similarity with a linear streak between two cycles by actively looking for pieces of
+		the cycle that are the same, and adding linear growing rewards to the similarity of long sub tours.
 		:param cycle1: First cycle.
 		:param cycle2: Second cycle.
-		:return: Similarity between the two cycles.
+		:return: Similarity between the two cycles, is a number between 0 and 1.
 		"""
 		cycle_length = len(cycle1)
 		assert cycle_length == len(cycle2), "Cycles should have the same length"
 
+		# The whool cycle is the same
+		max_similarity = cycle_length / 2 * (cycle_length + 1) # equals sum(range(1, cycle_length + 1))
+		min_similarity = cycle_length
+
 		similarity = 0
 		# Using a streak, so that the similarity is weighted by the length of the streak.
 		# So cycles with the same long subtour will have a higher similarity than cycles with many shorter sub tours.
-		streak = 0
+		streak = 1
 		i = 0
 
 		# Take into account if the first element is part of a sub tour but not the first element of the sub tour.
@@ -35,7 +39,7 @@ class SimilarityMethods:
 		l = j - 1
 		# but don't start on the first element, that's for the next while-loop
 		while k >= 0 and cycle1[k] == cycle2[l % cycle_length]:
-			similarity += 2 ** streak
+			similarity += streak
 			streak += 1
 			k -= 1
 			l -= 1
@@ -50,10 +54,10 @@ class SimilarityMethods:
 
 			while (i < end and
 				   cycle1[i] == cycle2[j % cycle_length]):
-				similarity += 2 ** streak
+				similarity += streak
 				streak += 1
 				i += 1
 				j += 1
-			streak = 0
+			streak = 1
 
-		return similarity
+		return similarity / max_similarity
