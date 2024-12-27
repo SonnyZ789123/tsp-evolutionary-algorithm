@@ -41,7 +41,7 @@ class Settings:
 		self.initialization.population_size = 500
 
 		if problem_size >= 200:
-			self.initialization.population_size = 200
+			self.initialization.population_size = 400
 		elif problem_size >= 500:
 			self.initialization.population_size = 100
 		elif problem_size >= 750:

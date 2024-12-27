@@ -29,7 +29,7 @@ class Population:
 		for individual in self.individuals:
 			similarities_above_threshold: List[float] = []
 			for other_individual in self.individuals:
-				similarity = SimilarityMethods.cycle_subtour_linear_streak(individual.cycle, other_individual.cycle)
+				similarity = SimilarityMethods.hamming(individual.cycle, other_individual.cycle)
 				if similarity > similarity_threshold:
 					# similarity between 0 and 1
 					similarities_above_threshold.append(similarity ** shape_exp)

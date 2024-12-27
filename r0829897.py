@@ -52,9 +52,6 @@ class r0829897:
 			mean_fitness_history.append(mean_fitness)
 			best_fitness_history.append(best_fitness)
 			variance_fitness_history.append(variance_fitness)
-			_, invalid_cycles = evolutionary_algorithm.population.valid_invalid_individual_proportion()
-			if invalid_cycles > 0:
-				print(f"Invalid cycles found: {invalid_cycles}")
 
 			###################################################
 			# Call the reporter with: KEEP THIS
@@ -83,8 +80,5 @@ class r0829897:
 						  title=f"Variance fitness history for {filename}")
 		print(f"Best individual cycle length: {
 		get_cycle_length(evolutionary_algorithm.population.best_individual().cycle, distance_matrix):.0f}")
-		# print(f"Best individual cycle: {evolutionary_algorithm.population.best_individual().cycle}")
-		# print(f"Best individual cycle distances: {
-		# get_cycle_distances(evolutionary_algorithm.population.best_individual().cycle, distance_matrix)}")
 
 		return 0
