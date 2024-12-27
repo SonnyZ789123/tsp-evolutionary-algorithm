@@ -5,6 +5,23 @@ from config.custom_types import Cycle
 
 class SimilarityMethods:
 	@staticmethod
+	def hamming(cycle1: Cycle, cycle2: Cycle) -> float:
+		"""
+		Calculate the Hamming distance as proportion between two cycles, after aligning the second cycle with the first element of the
+		first cycle.
+		:param cycle1: First cycle.
+		:param cycle2: Second cycle.
+		:return: Hamming distance between the two cycles, between 0 and 1.
+		"""
+		cycle_length = len(cycle1)
+		assert cycle_length == len(cycle2), "Cycles should have the same length"
+		start_index = np.where(cycle2 == cycle1[0])[0][0]
+		cycle2 = np.roll(cycle2, -start_index)
+		hamming = np.count_nonzero(cycle1 == cycle2)
+		return hamming / cycle_length
+
+
+	@staticmethod
 	def cycle_subtour_linear_streak(cycle1: Cycle, cycle2: Cycle) -> int:
 		"""
 		Calculate the cycle subtour similarity with a linear streak between two cycles by actively looking for pieces of

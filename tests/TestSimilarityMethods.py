@@ -31,6 +31,14 @@ class TestUtils(unittest.TestCase):
 		similarity = SimilarityMethods.cycle_subtour_linear_streak(self.cycle1, self.cycle2)
 		self.assertEqual(1, similarity)
 
+	def test_hamming(self):
+		hamming_distance = SimilarityMethods.hamming(self.cycle1, self.cycle2)
+		self.assertEqual(4/10, hamming_distance)
+
+	def test_hamming2(self):
+		self.cycle2 = np.array([1, 2, 3, 5, 4, 6, 7, 9, 8, 0])
+		hamming_distance = SimilarityMethods.hamming(self.cycle1, self.cycle2)
+		self.assertEqual(6/10, hamming_distance)
 
 if __name__ == '__main__':
 	unittest.main()
