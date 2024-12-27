@@ -6,6 +6,7 @@ from methods.MutationMethods import MutationMethods
 class Individual:
 	cycle: Cycle
 	distance_matrix: DistanceMatrix
+	fitness_sharing: float = 1.0
 	_fitness: float
 
 	def __init__(self, cycle: Cycle, distance_matrix: DistanceMatrix):
@@ -14,7 +15,7 @@ class Individual:
 
 	@property
 	def fitness(self) -> float:
-		return FitnessMethods.negative_of_length(self)
+		return self.fitness_sharing * FitnessMethods.negative_of_length(self)
 
 	def mutate(self) -> None:
 		MutationMethods.reverse_subtour(self)

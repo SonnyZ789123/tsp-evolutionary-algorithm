@@ -1,5 +1,10 @@
+class Fitness:
+	similarity_threshold: float = 0.5
+	shape_exp: float = 3
+
+
 class Initialization:
-	population_size: int = 200
+	population_size: int = 100
 	max_iterations: int = 100
 
 
@@ -12,7 +17,7 @@ class Selection:
 
 
 class Mutation:
-	alpha: float = 0.05
+	alpha: float = 0.1
 
 
 class Recombination:
@@ -24,6 +29,7 @@ class Elimination:
 
 
 class Settings:
+	fitness: Fitness = Fitness()
 	initialization: Initialization = Initialization()
 	convergence: Convergence = Convergence()
 	selection: Selection = Selection()

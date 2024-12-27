@@ -10,6 +10,8 @@ class IndividualProtocol(Protocol):
 	The distance matrix representing the distances between the cities. The length of the rows should be equal 
 	to the length of the columns, and the length should be equal to the length of the cycle. 
 	"""
+	fitness_sharing: float
+	""" The fitness sharing proportion of the individual. """
 	_fitness: float
 
 	@property

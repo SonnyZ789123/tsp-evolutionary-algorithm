@@ -32,6 +32,10 @@ class EvolutionaryAlgorithm:
 		# 	return True
 		return False
 
+	def update_fitness_sharing_proportions(self) -> None:
+		self.population.update_fitness_sharing_proportions(self.settings.fitness.similarity_threshold,
+														   self.settings.fitness.shape_exp)
+
 	def select(self) -> Individual:
 		return SelectionMethods.k_tournament(self.population, self.settings.selection.k_tournament)
 

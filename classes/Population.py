@@ -1,9 +1,12 @@
+from typing import List
+
 import numpy as np
 
 from config.custom_types import DistanceMatrix, INFINITY_REPRESENTATION
 from methods.InitializationMethods import InitializationMethods, Heuristics
+from methods.SimilarityMethods import SimilarityMethods
 from protocols.IndividualProtocol import IndividualProtocol
-from utils.cycle_utils import is_valid_cycle, get_cycle_distances
+from utils.cycle_utils import is_valid_cycle
 
 
 class Population:
@@ -21,6 +24,17 @@ class Population:
 																			 Heuristics.nearest_neighbour)
 		random_individuals = InitializationMethods.generate_random_valid_population(size - 1, distance_matrix)
 		self.individuals = [greedy_individual] + random_individuals
+
+	def update_fitness_sharing_proportions(self, similarity_threshold: float = 0.5, shape_exp: float = 1) -> None:
+		for individual in self.individuals:
+			similarities_above_threshold: List[float] = []
+			for other_individual in self.individuals:
+				similarity = SimilarityMethods.cycle_subtour_linear_streak(individual.cycle, other_individual.cycle)
+				if similarity > similarity_threshold:
+					# similarity between 0 and 1
+					similarities_above_threshold.append(similarity ** shape_exp)
+			# limit subtracting to at most 25%
+			individual.fitness_sharing = 0.75 + (0.25 * 1 / sum(similarities_above_threshold))
 
 	def mean_fitness(self) -> float:
 		""" Calculate the mean fitness of the population, filtering out invalid cycles. """

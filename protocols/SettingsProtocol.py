@@ -1,6 +1,13 @@
 from typing import Protocol
 
 
+class FitnessProtocol(Protocol):
+	similarity_threshold: float
+	""" The threshold for similarity between cycles, between 0 and 1. """
+	shape_exp: float
+	""" The exponent for the shape of the fitness sharing function, between 0.25 and 4 """
+
+
 class InitializationProtocol(Protocol):
 	population_size: int
 	""" The size of the population, should be a positive even integer. """
@@ -34,6 +41,7 @@ class EliminationProtocol(Protocol):
 
 
 class SettingsProtocol(Protocol):
+	fitness: FitnessProtocol
 	initialization: InitializationProtocol
 	convergence: ConvergenceProtocol
 	selection: SelectionProtocol
