@@ -14,13 +14,15 @@ from protocols.SettingsProtocol import SettingsProtocol
 
 
 class EvolutionaryAlgorithm:
-	settings: SettingsProtocol = Settings()
+	settings: SettingsProtocol
 	population: PopulationProtocol
 	_iteration: int = 0
 	_offsprings: list[IndividualProtocol] = []
 	_converged: bool
 
 	def __init__(self, distance_matrix: DistanceMatrix):
+		problem_size = distance_matrix.shape[0]
+		self.settings = Settings(problem_size)
 		self.population = Population(self.settings.initialization.population_size, distance_matrix)
 
 	@property

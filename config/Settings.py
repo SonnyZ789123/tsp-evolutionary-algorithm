@@ -4,7 +4,7 @@ class Fitness:
 
 
 class Initialization:
-	population_size: int = 100
+	population_size: int = 500
 	max_iterations: int = 100
 
 
@@ -36,3 +36,15 @@ class Settings:
 	mutation: Mutation = Mutation()
 	recombination: Recombination = Recombination()
 	elimination: Elimination = Elimination()
+
+	def __init__(self, problem_size: int):
+		self.initialization.population_size = 500
+
+		if problem_size >= 200:
+			self.initialization.population_size = 200
+		elif problem_size >= 500:
+			self.initialization.population_size = 100
+		elif problem_size >= 750:
+			self.initialization.population_size = 50
+
+
