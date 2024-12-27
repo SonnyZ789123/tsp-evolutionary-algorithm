@@ -26,8 +26,8 @@ class TestNeighbourMethods(unittest.TestCase):
 	@patch("numpy.random.choice")
 	def test_swap_edges(self, choice):
 		choice.return_value = 1, 5
-		neighbour = NeighbourMethods.swap_edges(self.mock_individual)
-		self.assertEqual(neighbour.cycle.tolist(), [1, 4, 3, 6, 5, 2])
+		neighbour = NeighbourMethods.swap_edges(self.mock_individual.cycle)
+		self.assertEqual(neighbour.tolist(), [1, 4, 3, 6, 5, 2])
 
 
 
