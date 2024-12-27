@@ -7,6 +7,7 @@ from config.custom_types import Cycle, DistanceMatrix
 class MockIndividual:
 	cycle: Cycle
 	distance_matrix: DistanceMatrix
+	fitness_sharing: float = 0.
 	_fitness: float
 	mock_fitness_method: Callable[[IndividualProtocol], float]
 	mock_mutate_method: Callable[[IndividualProtocol], None]
