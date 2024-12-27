@@ -1,4 +1,4 @@
-from typing import Protocol
+from typing import Protocol, Optional
 from config.custom_types import Cycle, DistanceMatrix
 
 
@@ -17,6 +17,10 @@ class IndividualProtocol(Protocol):
 	@property
 	def fitness(self) -> float:
 		""" The fitness of the individual, which can be negative. """
+		...
+
+	def get_fitness_internal(self) -> float:
+		""" The unmodified fitness of the individual. """
 		...
 
 	def mutate(self) -> None:

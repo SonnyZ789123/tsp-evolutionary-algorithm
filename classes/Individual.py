@@ -17,6 +17,9 @@ class Individual:
 	def fitness(self) -> float:
 		return self.fitness_sharing * FitnessMethods.negative_of_length(self)
 
+	def get_fitness_internal(self):
+		return FitnessMethods.negative_of_length(self)
+
 	def mutate(self) -> None:
 		MutationMethods.reverse_subtour(self)
 

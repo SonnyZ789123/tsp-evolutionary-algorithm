@@ -24,5 +24,8 @@ class MockIndividual:
 	def fitness(self) -> float:
 		return self.mock_fitness_method(self)
 
+	def get_fitness_internal(self) -> float:
+		return self.mock_fitness_method(self)
+
 	def mutate(self) -> None:
 		self.mock_mutate_method(self)
