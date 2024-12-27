@@ -24,6 +24,12 @@ class Recombination:
 	pass
 
 
+class LocalOptimisation:
+	alpha: float = 0.2
+	k_opt_pool_size: int = 3
+	k_opt_k: int = 2
+
+
 class Elimination:
 	mixed_elitism_proportion: float = 0.5
 
@@ -35,6 +41,7 @@ class Settings:
 	selection: Selection = Selection()
 	mutation: Mutation = Mutation()
 	recombination: Recombination = Recombination()
+	local_optimisation: LocalOptimisation = LocalOptimisation()
 	elimination: Elimination = Elimination()
 
 	def __init__(self, problem_size: int):
@@ -46,5 +53,3 @@ class Settings:
 			self.initialization.population_size = 100
 		elif problem_size >= 750:
 			self.initialization.population_size = 50
-
-

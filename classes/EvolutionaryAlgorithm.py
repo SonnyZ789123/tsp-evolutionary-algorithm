@@ -5,6 +5,8 @@ from classes.Population import Population
 from config.Settings import Settings
 from config.custom_types import DistanceMatrix
 from methods.EliminationMethods import EliminationMethods
+from methods.LocalOptimisationMethods import LocalOptimisationMethods
+from methods.NeighbourMethods import NeighbourMethods
 from methods.RecombinationMethods import RecombinationMethods
 from methods.SelectionMethods import SelectionMethods
 from methods.ConvergenceMethods import ConvergenceMethods
@@ -54,6 +56,13 @@ class EvolutionaryAlgorithm:
 		for individual in self._offsprings:
 			if random.random() < self.settings.mutation.alpha:
 				individual.mutate()
+
+	def local_optimisation(self):
+		for individual in self._offsprings:
+			if random.random() < self.settings.local_optimisation.alpha:
+				LocalOptimisationMethods.k_opt(individual, NeighbourMethods.swap_edges,
+											   self.settings.local_optimisation.k_opt_pool_size,
+											   self.settings.local_optimisation.k_opt_k)
 
 	def elimination(self) -> None:
 		EliminationMethods.mixed_elitist(self.population, self._offsprings,

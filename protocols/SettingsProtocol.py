@@ -35,6 +35,15 @@ class RecombinationProtocol(Protocol):
 	...
 
 
+class LocalOptimisationProtocol(Protocol):
+	alpha: float
+	""" The probability of local optimisation. """
+	k_opt_pool_size: int
+	""" The amount of neighbours to generate. """
+	k_opt_k: int
+	""" The value of k for k-opt, the depth of the search tree. """
+
+
 class EliminationProtocol(Protocol):
 	mixed_elitism_proportion: float
 	""" The proportion of the population to keep in the next generation, between 0 and 1. """
@@ -47,4 +56,5 @@ class SettingsProtocol(Protocol):
 	selection: SelectionProtocol
 	mutation: MutationProtocol
 	recombination: RecombinationProtocol
+	local_optimisation: LocalOptimisationProtocol
 	elimination: EliminationProtocol

@@ -41,6 +41,7 @@ class r0829897:
 			evolutionary_algorithm.select()
 			evolutionary_algorithm.recombination()
 			evolutionary_algorithm.mutation()
+			evolutionary_algorithm.local_optimisation()
 			evolutionary_algorithm.elimination()
 
 			mean_fitness = evolutionary_algorithm.population.mean_fitness()

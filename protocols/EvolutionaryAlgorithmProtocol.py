@@ -25,3 +25,6 @@ class EvolutionaryAlgorithmProtocol(Protocol):
 
 	def elimination(self) -> None:
 		...
+
+	def local_optimisation(self) -> None:
+		...
