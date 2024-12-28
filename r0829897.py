@@ -66,9 +66,9 @@ class r0829897:
 				break
 			###################################################
 
+		# TODO: Remove the plotting and writing in the file
 		end_time = time.time()
 		elapsed_time = end_time - start_time
-		print(f"Elapsed time for solving TSP: {elapsed_time:.2f} seconds")
 
 		# Plotting
 		iteration_numbers = list(range(len(mean_fitness_history)))
@@ -80,7 +80,16 @@ class r0829897:
 					  title=f"Best fitness history for {filename}")
 		generate_log_plot(iteration_numbers, variance_fitness_history, y_label="Variance fitness",
 						  title=f"Variance fitness history for {filename}")
-		print(f"Best individual cycle length: {
-		get_cycle_length(evolutionary_algorithm.population.best_individual().cycle, distance_matrix):.0f}")
+		best_cycle_length = get_cycle_length(evolutionary_algorithm.population.best_individual().cycle, distance_matrix)
+
+		with open('history.txt', 'a') as file:
+			# Add text to the file
+			file.write(filename + "\n")
+			file.write(f"Time: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}\n")
+			print(f"Elapsed time for solving TSP: {elapsed_time:.2f} seconds")
+			file.write(f"Elapsed time for solving TSP: {elapsed_time:.2f} seconds\n")
+			print(f"Best individual cycle length: {best_cycle_length:.0f}")
+			file.write(f"Best individual cycle length: {best_cycle_length:.0f}\n")
+			file.write("====================================================\n")
 
 		return 0
