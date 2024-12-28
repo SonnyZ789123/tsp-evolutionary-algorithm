@@ -1,4 +1,5 @@
 from typing import List
+from warnings import deprecated
 
 import numpy as np
 
@@ -92,6 +93,7 @@ class EliminationMethods:
 		population.individuals = next_generation
 
 	@staticmethod
+	@deprecated("Use offspring_fitness_based_with_crowding_updated instead.")
 	def offspring_fitness_based_with_crowding(population: PopulationProtocol, offsprings: List[IndividualProtocol],
 											  proportion: float = 0.5, k: int = 5) -> None:
 		"""
@@ -112,3 +114,38 @@ class EliminationMethods:
 																									 individual.cycle))
 			population.individuals.remove(closest)
 			population.individuals.append(offspring)
+
+	@staticmethod
+	def mixed_elitist_with_crowding(population: PopulationProtocol,
+									offsprings: List[IndividualProtocol],
+									proportion: float = 0.5, k: int = 5) -> None:
+		"""
+		Select the top proportion of the population, and the top proportion of the offsprings, but for every offspring
+		crowding is used inside the offsprings to ensure diversity.
+		:param population: The population.
+		:param offsprings: The offsprings, the size has to be at least 2 * (1 - proportion) * population size.
+		:param proportion: The top proportion of the seed population to keep.
+		:param k: The number of individuals to consider in the k-tournament for the crowding.
+		"""
+		# Sort current population and offspring by fitness
+		sorted_current = sorted(population.individuals, key=lambda individual: individual.fitness, reverse=True)
+		sorted_offspring = sorted(offsprings, key=lambda individual: individual.fitness, reverse=True)
+
+		selected_from_current = sorted_current[:round(population.size * proportion)]
+
+		offsprings_size = population.size - round(population.size * proportion)
+		# Crowding: fill the selected offspring but with each iteration remove a offspring that is similar to the
+		# selected one
+		selected_from_offspring = []
+		for i in range(offsprings_size):
+			current_offspring = sorted_offspring.pop(i)
+			selected_from_offspring.append(current_offspring)
+			closest = SelectionMethods.k_tournament(sorted_offspring, k,
+													key=lambda individual: SimilarityMethods.hamming(
+														current_offspring.cycle,
+														individual.cycle))
+			sorted_offspring.remove(closest)
+
+		population.individuals = selected_from_current + selected_from_offspring
+		assert len(population.individuals) == population.size
+

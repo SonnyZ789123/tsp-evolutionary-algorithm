@@ -57,6 +57,10 @@ class EliminationProtocol(Protocol):
 	""" The proportion of the population to use for offspring fitness based with crowding, between 0 and 1. """
 	offspring_fitness_based_with_crowding_k: int
 	""" The number of individuals to consider in the k-tournament for the crowding. """
+	mixed_elitist_with_crowding_proportion: float
+	""" The proportion of the population to use for mixed elitist with crowding, between 0 and 1. """
+	mixed_elitist_with_crowding_k: int
+	""" The number of individuals to consider in the k-tournament for the crowding. """
 
 
 class SettingsProtocol(Protocol):
