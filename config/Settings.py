@@ -25,8 +25,9 @@ class Recombination:
 
 
 class LocalOptimisation:
-	alpha: float = 0.2
-	k_opt_pool_size: int = 3
+	proportion_worst: float = 0.5
+	opt_probability: float = 0.5
+	k_opt_pool_size: int = 5
 	k_opt_k: int = 2
 
 

@@ -36,7 +36,9 @@ class RecombinationProtocol(Protocol):
 
 
 class LocalOptimisationProtocol(Protocol):
-	alpha: float
+	proportion_worst: float = 0.5
+	""" The proportion of the worst individuals to consider for local optimisation. """
+	opt_probability: float = 0.2
 	""" The probability of local optimisation. """
 	k_opt_pool_size: int
 	""" The amount of neighbours to generate. """

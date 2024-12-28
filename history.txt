@@ -1,0 +1,60 @@
+tour50.csv
+Time: 2024-12-28 10:08:12
+Elapsed time for solving TSP: 31.42 seconds
+Best individual cycle length: 27024
+====================================================
+tour50.csv
+Time: 2024-12-28 10:11:15
+Elapsed time for solving TSP: 36.91 seconds
+Best individual cycle length: 28265
+====================================================
+tour50.csv
+Time: 2024-12-28 10:15:02
+Elapsed time for solving TSP: 40.84 seconds
+Best individual cycle length: 27085
+====================================================
+tour50.csv
+Time: 2024-12-28 10:20:31
+Elapsed time for solving TSP: 119.44 seconds
+Best individual cycle length: 26343
+====================================================
+tour50.csv
+Time: 2024-12-28 10:26:35
+Elapsed time for solving TSP: 219.80 seconds
+Best individual cycle length: 25779
+====================================================
+tour50.csv
+Time: 2024-12-28 10:39:31
+Elapsed time for solving TSP: 26.83 seconds
+Best individual cycle length: 26769
+====================================================
+tour50.csv
+Time: 2024-12-28 10:40:46
+Elapsed time for solving TSP: 29.53 seconds
+Best individual cycle length: 28048
+====================================================
+tour50.csv
+Time: 2024-12-28 10:41:24
+Elapsed time for solving TSP: 29.05 seconds
+Best individual cycle length: 28140
+====================================================
+tour50.csv
+Time: 2024-12-28 10:42:00
+Elapsed time for solving TSP: 30.28 seconds
+Best individual cycle length: 27145
+====================================================
+tour50.csv
+Time: 2024-12-28 10:48:48
+Elapsed time for solving TSP: 24.62 seconds
+Best individual cycle length: 26806
+====================================================
+tour50.csv
+Time: 2024-12-28 10:51:26
+Elapsed time for solving TSP: 24.24 seconds
+Best individual cycle length: 28286
+====================================================
+tour50.csv
+Time: 2024-12-28 10:54:43
+Elapsed time for solving TSP: 110.36 seconds
+Best individual cycle length: 27104
+====================================================

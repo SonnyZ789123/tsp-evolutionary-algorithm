@@ -58,9 +58,10 @@ class EvolutionaryAlgorithm:
 				individual.mutate()
 
 	def local_optimisation(self):
-		for individual in self._offsprings:
-			if random.random() < self.settings.local_optimisation.alpha:
-				LocalOptimisationMethods.k_opt(individual, NeighbourMethods.swap_edges,
+		self._offsprings.sort(key=lambda x: x.fitness)  # from low to high (worst to best)
+		for i in range(round((self.population.size * self.settings.local_optimisation.proportion_worst))):
+			if random.random() < self.settings.local_optimisation.opt_probability:
+				LocalOptimisationMethods.k_opt(self._offsprings[i], NeighbourMethods.swap_edges,
 											   self.settings.local_optimisation.k_opt_pool_size,
 											   self.settings.local_optimisation.k_opt_k)
 
