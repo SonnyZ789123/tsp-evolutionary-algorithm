@@ -1,6 +1,5 @@
 import random
 
-from classes.Individual import Individual
 from classes.Population import Population
 from config.Settings import Settings
 from config.custom_types import DistanceMatrix
@@ -40,8 +39,8 @@ class EvolutionaryAlgorithm:
 		self.population.update_fitness_sharing_proportions(self.settings.fitness.similarity_threshold,
 														   self.settings.fitness.shape_exp)
 
-	def select(self) -> Individual:
-		return SelectionMethods.k_tournament(self.population, self.settings.selection.k_tournament)
+	def select(self) -> IndividualProtocol:
+		return SelectionMethods.k_tournament(self.population.individuals, self.settings.selection.k_tournament)
 
 	def recombination(self) -> None:
 		self._offsprings = []
