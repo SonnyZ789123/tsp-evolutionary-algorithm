@@ -1,3 +1,6 @@
+# Base 16 - Offspring Fitness Based with Crowding
+
+```python
 class Fitness:
 	similarity_threshold: float = 0.5
 	shape_exp: float = 3
@@ -58,3 +61,41 @@ class Settings:
 			self.initialization.population_size = 100
 		elif problem_size >= 750:
 			self.initialization.population_size = 50
+```
+
+- initialization: 1 `generate_greedy_population` with `nearest_neighbour` and rest `generate_random_valid_population`
+- convergence: `max_iterations`
+- selection: `k_tournament`
+- recombination: `order_crossover`
+- mutation: `reverse_subtour`
+- local optimisation: `k_opt`
+- elimination: `offspring_fitness_based_with_crowding`
+- fitness: `negative_of_length`
+- problem size: 50 -> 500
+
+## Results
+
+- Elapsed time for solving TSP: 140.83 seconds
+- Best individual cycle length: 73265
+
+---
+
+- Elapsed time for solving TSP: 40.48 seconds
+- Best individual cycle length: 26652
+
+---
+
+- Elapsed time for solving TSP: 81.07 seconds
+- Best individual cycle length: 113188
+
+---
+
+- Elapsed time for solving TSP: 295.62 seconds
+- Best individual cycle length: 1922668
+
+## Conclusion
+
+The offspring fitness based with crowding elimination strategy gives very bad results. Probably because I don't do
+fitness based on the seed population, I just let the crowding remove the ones that are similar to the picked ones of the
+offsprings.
+

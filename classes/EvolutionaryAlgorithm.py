@@ -65,5 +65,4 @@ class EvolutionaryAlgorithm:
 											   self.settings.local_optimisation.k_opt_k)
 
 	def elimination(self) -> None:
-		EliminationMethods.mixed_elitist(self.population, self._offsprings,
-										 self.settings.elimination.mixed_elitism_proportion)
+		EliminationMethods.offspring_fitness_based_with_crowding(self.population, self._offsprings)

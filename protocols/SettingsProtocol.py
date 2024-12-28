@@ -53,6 +53,10 @@ class EliminationProtocol(Protocol):
 	""" The proportion of the subpopulation to keep in the next generation, between 0 and 1. """
 	mixed_elitism_rest_merged_random_proportion_size: float
 	""" The proportion of the population to use for mixed elitism, between 0 and 1. """
+	offspring_fitness_based_with_crowding_proportion: float
+	""" The proportion of the population to use for offspring fitness based with crowding, between 0 and 1. """
+	offspring_fitness_based_with_crowding_k: int
+	""" The number of individuals to consider in the k-tournament for the crowding. """
 
 
 class SettingsProtocol(Protocol):
