@@ -81,33 +81,33 @@ pick for the next iteration, I remove the most similar individual from the avail
 
 ## Results
 
-tour50.csv
-Elapsed time for solving TSP: 40.57 seconds
-Best individual cycle length: 25801
+- tour50.csv
+- Elapsed time for solving TSP: 40.57 seconds
+- Best individual cycle length: 25801
 
 ---
 
-tour100.csv
-Elapsed time for solving TSP: 80.92 seconds
-Best individual cycle length: 85729
+- tour100.csv
+- Elapsed time for solving TSP: 80.92 seconds
+- Best individual cycle length: 85729
 
 ---
 
-tour200.csv
-Elapsed time for solving TSP: 175.16 seconds
-Best individual cycle length: 38435
+- tour200.csv
+- Elapsed time for solving TSP: 175.16 seconds
+- Best individual cycle length: 38435
 
 ---
 
-tour500.csv
-Elapsed time for solving TSP: 294.11 seconds
-Best individual cycle length: 159247
+- tour500.csv
+- Elapsed time for solving TSP: 294.11 seconds
+- Best individual cycle length: 159247
 
 ---
 
-tour750.csv
-Elapsed time for solving TSP: 283.14 seconds
-Best individual cycle length: 209288
+- tour750.csv
+- Elapsed time for solving TSP: 283.14 seconds
+- Best individual cycle length: 209288
 
 ## Conclusion
 

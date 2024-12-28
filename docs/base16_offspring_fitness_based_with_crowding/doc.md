@@ -75,21 +75,25 @@ class Settings:
 
 ## Results
 
+- tour50.csv
 - Elapsed time for solving TSP: 140.83 seconds
 - Best individual cycle length: 73265
 
 ---
 
+- tour100.csv
 - Elapsed time for solving TSP: 40.48 seconds
 - Best individual cycle length: 26652
 
 ---
 
+- tour200.csv
 - Elapsed time for solving TSP: 81.07 seconds
 - Best individual cycle length: 113188
 
 ---
 
+- tour500.csv
 - Elapsed time for solving TSP: 295.62 seconds
 - Best individual cycle length: 1922668
 
