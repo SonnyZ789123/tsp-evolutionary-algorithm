@@ -49,6 +49,10 @@ class LocalOptimisationProtocol(Protocol):
 class EliminationProtocol(Protocol):
 	mixed_elitism_proportion: float
 	""" The proportion of the population to keep in the next generation, between 0 and 1. """
+	mixed_elitism_rest_merged_random_mixed_elitist_proportion: float
+	""" The proportion of the subpopulation to keep in the next generation, between 0 and 1. """
+	mixed_elitism_rest_merged_random_proportion_size: float
+	""" The proportion of the population to use for mixed elitism, between 0 and 1. """
 
 
 class SettingsProtocol(Protocol):
