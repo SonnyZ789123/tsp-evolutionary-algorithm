@@ -5,7 +5,7 @@ class Fitness:
 
 class Initialization:
 	population_size: int = 500
-	max_iterations: int = 130
+	max_iterations: int = 100
 
 
 class Convergence:
@@ -52,10 +52,9 @@ class Settings:
 	elimination: Elimination = Elimination()
 
 	def __init__(self, problem_size: int):
-		self.initialization.population_size = 500
-
 		if problem_size >= 200:
 			self.initialization.population_size = 400
+			self.max_iterations = 150
 		if problem_size >= 500:
 			self.initialization.population_size = 100
 		if problem_size >= 750:
