@@ -74,7 +74,7 @@ class Settings:
 - elimination: `mixed_elitist_with_crowding`
 - insert diversity: `replace_worst_with_random`
 - fitness: `negative_of_length`
-- problem size: 200
+- problem size: 200 (baseline 39745)
 
 ## Without fitness cache
 
@@ -102,3 +102,30 @@ class Settings:
 - Best individual cycle length: 38662
 
 ## With fitness cache
+
+- Elapsed time for solving TSP: 217.03 seconds
+- Best individual cycle length: 38341
+
+---
+
+- Elapsed time for solving TSP: 209.13 seconds
+- Best individual cycle length: 38570
+
+---
+
+- Elapsed time for solving TSP: 210.58 seconds
+- Best individual cycle length: 38713
+
+---
+
+- Elapsed time for solving TSP: 212.40 seconds
+- Best individual cycle length: 39549
+
+---
+
+- Elapsed time for solving TSP: 212.86 seconds
+- Best individual cycle length: 39299
+
+## Conclusion
+
+- The fitness cache significantly reduces the elapsed time for solving TSP.
