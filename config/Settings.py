@@ -5,7 +5,7 @@ class Fitness:
 
 class Initialization:
 	population_size: int = 500
-	max_iterations: int = 100
+	max_iterations: int = 150
 
 
 class Convergence:
@@ -39,6 +39,7 @@ class Elimination:
 	offspring_fitness_based_with_crowding_k: int = 5
 	mixed_elitist_with_crowding_proportion: float = 0.5
 	mixed_elitist_with_crowding_k: int = 5
+	replace_worst_with_random_k: float = 0.3
 
 
 class Settings:
@@ -54,8 +55,8 @@ class Settings:
 	def __init__(self, problem_size: int):
 		if problem_size >= 200:
 			self.initialization.population_size = 400
-			self.max_iterations = 150
+			self.max_iterations = 200
 		if problem_size >= 500:
-			self.initialization.population_size = 100
+			self.initialization.population_size = 200
 		if problem_size >= 750:
-			self.initialization.population_size = 50
+			self.initialization.population_size = 100

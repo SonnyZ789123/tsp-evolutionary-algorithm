@@ -68,3 +68,7 @@ class EvolutionaryAlgorithm:
 		EliminationMethods.mixed_elitist_with_crowding(self.population, self._offsprings,
 													   self.settings.elimination.mixed_elitist_with_crowding_proportion,
 													   self.settings.elimination.mixed_elitist_with_crowding_k)
+
+	def insert_diversity(self):
+		EliminationMethods.replace_worst_with_random(self.population,
+													 self.settings.elimination.replace_worst_with_random_k)

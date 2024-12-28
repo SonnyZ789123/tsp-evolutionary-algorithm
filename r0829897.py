@@ -37,13 +37,13 @@ class r0829897:
 		# Time the algorithm
 		start_time = time.time()
 		while not evolutionary_algorithm.converged:
-			# TODO: fix fitness sharing
 			# evolutionary_algorithm.update_fitness_sharing_proportions()
 			evolutionary_algorithm.select()
 			evolutionary_algorithm.recombination()
 			evolutionary_algorithm.mutation()
 			evolutionary_algorithm.local_optimisation()
 			evolutionary_algorithm.elimination()
+			evolutionary_algorithm.insert_diversity()
 
 			mean_fitness = evolutionary_algorithm.population.mean_fitness()
 			best_fitness = evolutionary_algorithm.population.best_fitness()

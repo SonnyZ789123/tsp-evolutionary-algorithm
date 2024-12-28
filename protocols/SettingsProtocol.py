@@ -61,6 +61,8 @@ class EliminationProtocol(Protocol):
 	""" The proportion of the population to use for mixed elitist with crowding, between 0 and 1. """
 	mixed_elitist_with_crowding_k: int
 	""" The number of individuals to consider in the k-tournament for the crowding. """
+	replace_worst_with_random_k: float
+	""" The worst proportion of the population to replace with random individuals. """
 
 
 class SettingsProtocol(Protocol):

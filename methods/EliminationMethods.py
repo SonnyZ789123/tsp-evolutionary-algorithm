@@ -3,6 +3,7 @@ from warnings import deprecated
 
 import numpy as np
 
+from methods.InitializationMethods import InitializationMethods
 from methods.SelectionMethods import SelectionMethods
 from methods.SimilarityMethods import SimilarityMethods
 from protocols.IndividualProtocol import IndividualProtocol
@@ -149,3 +150,16 @@ class EliminationMethods:
 		population.individuals = selected_from_current + selected_from_offspring
 		assert len(population.individuals) == population.size
 
+	@staticmethod
+	def replace_worst_with_random(population: PopulationProtocol, k: float = 0.1) -> None:
+		"""
+		Replace the worst individuals with random individuals.
+		:param population: The population.
+		:param k: The worst proportion of the population to replace with random individuals.
+		"""
+		population.individuals.sort(key=lambda individual: individual.fitness)
+		amount_to_replace = round(population.size * k)
+		population.individuals = population.individuals[amount_to_replace:]
+		for _ in range(amount_to_replace):
+			population.individuals.append(
+				InitializationMethods.generate_random_valid_individual(population.distance_matrix))
