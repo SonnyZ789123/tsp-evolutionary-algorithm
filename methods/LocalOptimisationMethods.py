@@ -1,4 +1,4 @@
-from typing import Callable
+from typing import Callable, List
 
 from classes.Individual import Individual
 from config.custom_types import Cycle
@@ -7,7 +7,7 @@ from protocols.IndividualProtocol import IndividualProtocol
 
 class LocalOptimisationMethods:
 	@staticmethod
-	def _generate_neighbours(cycle: Cycle, neighbour_method: Callable[[Cycle], Cycle], pool_size: int, k: int) -> [
+	def _generate_neighbours(cycle: Cycle, neighbour_method: Callable[[Cycle], Cycle], pool_size: int, k: int) -> List[
 		Cycle]:
 		if k == 0:
 			return [cycle]
@@ -15,7 +15,8 @@ class LocalOptimisationMethods:
 		neighbours = []
 		for _ in range(pool_size):
 			neighbour = neighbour_method(cycle)
-			neighbours.extend(LocalOptimisationMethods._generate_neighbours(neighbour, neighbour_method, pool_size, k - 1))
+			neighbours.extend(
+				LocalOptimisationMethods._generate_neighbours(neighbour, neighbour_method, pool_size, k - 1))
 		return neighbours
 
 	@staticmethod

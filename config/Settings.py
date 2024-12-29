@@ -1,3 +1,7 @@
+from protocols.SettingsProtocol import FitnessProtocol, InitializationProtocol, ConvergenceProtocol, SelectionProtocol, \
+	MutationProtocol, RecombinationProtocol, LocalOptimisationProtocol, EliminationProtocol
+
+
 class Fitness:
 	similarity_threshold: float = 0.5
 	shape_exp: float = 3
@@ -44,14 +48,14 @@ class Elimination:
 
 
 class Settings:
-	fitness: Fitness = Fitness()
-	initialization: Initialization = Initialization()
-	convergence: Convergence = Convergence()
-	selection: Selection = Selection()
-	mutation: Mutation = Mutation()
-	recombination: Recombination = Recombination()
-	local_optimisation: LocalOptimisation = LocalOptimisation()
-	elimination: Elimination = Elimination()
+	fitness: FitnessProtocol = Fitness()
+	initialization: InitializationProtocol = Initialization()
+	convergence: ConvergenceProtocol = Convergence()
+	selection: SelectionProtocol = Selection()
+	mutation: MutationProtocol = Mutation()
+	recombination: RecombinationProtocol = Recombination()
+	local_optimisation: LocalOptimisationProtocol = LocalOptimisation()
+	elimination: EliminationProtocol = Elimination()
 
 	def __init__(self, problem_size: int):
 		if problem_size >= 200:

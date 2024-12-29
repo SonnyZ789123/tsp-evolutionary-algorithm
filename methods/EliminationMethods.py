@@ -1,3 +1,4 @@
+import random
 from typing import List
 from warnings import deprecated
 
@@ -85,7 +86,7 @@ class EliminationMethods:
 		leftover_from_offspring = sorted_offspring[(size - round(size * mixed_elitist_proportion)):]
 
 		leftover_merged = leftover_from_current + leftover_from_offspring
-		np.random.shuffle(leftover_merged)
+		random.shuffle(leftover_merged)
 		leftover = leftover_merged[:leftover_size]
 
 		# Combine to form the next generation

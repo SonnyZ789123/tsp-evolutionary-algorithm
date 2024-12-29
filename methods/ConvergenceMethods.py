@@ -31,4 +31,4 @@ class ConvergenceMethods:
 		"""
 		individuals_fitness = [individual.fitness for individual in population.individuals]
 		variance = np.var(individuals_fitness)
-		return variance < threshold
+		return bool(variance < threshold)
