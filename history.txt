@@ -283,3 +283,8 @@ Time: 2024-12-29 14:17:28
 Elapsed time for solving TSP: 35.87 seconds
 Best individual cycle length: 27118
 ====================================================
+tour50.csv
+Time: 2024-12-29 14:49:25
+Elapsed time for solving TSP: 32.44 seconds
+Best individual cycle length: 27644
+====================================================

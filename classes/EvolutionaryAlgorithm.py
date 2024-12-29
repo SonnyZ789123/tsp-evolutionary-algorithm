@@ -1,16 +1,10 @@
 import random
 from warnings import deprecated
 
+from classes.Controller import Controller
 from classes.Population import Population
 from config.Settings import Settings
 from config.custom_types import DistanceMatrix
-from methods.EliminationMethods import EliminationMethods
-from methods.InitializationMethods import InitializationMethods
-from methods.LocalOptimisationMethods import LocalOptimisationMethods
-from methods.MutationMethods import MutationMethods
-from methods.NeighbourMethods import NeighbourMethods
-from methods.RecombinationMethods import RecombinationMethods
-from methods.SelectionMethods import SelectionMethods
 from protocols.IndividualProtocol import IndividualProtocol
 from protocols.PopulationProtocol import PopulationProtocol
 from protocols.SettingsProtocol import SettingsProtocol
@@ -26,30 +20,16 @@ class EvolutionaryAlgorithm:
 	_iteration: int = 0
 	_offsprings: list[IndividualProtocol] = []
 	_converged: bool
-
-	_initializationMethods: InitializationMethods
-	_selectionMethods: SelectionMethods
-	_recombinationMethods: RecombinationMethods
-	_mutationMethods: MutationMethods
-	_localOptimisationMethods: LocalOptimisationMethods
-	_eliminationMethods: EliminationMethods
+	_controller: Controller
 
 	def __init__(self, distance_matrix: DistanceMatrix):
 		self.distance_matrix = distance_matrix
 		problem_size = distance_matrix.shape[0]
 		self.settings = Settings(problem_size)
-
-		self._initializationMethods = InitializationMethods(self.settings.initialization)
-		self._selectionMethods = SelectionMethods(self.settings.selection)
-		self._recombinationMethods = RecombinationMethods(self.settings.recombination)
-		self._mutationMethods = MutationMethods(self.settings.mutation)
-		self._localOptimisationMethods = LocalOptimisationMethods(self.settings.local_optimisation)
-		self._eliminationMethods = EliminationMethods(self.settings.elimination)
+		self._controller = Controller(self.settings)
 
 	def initialize_population(self) -> None:
-		initial_individuals = self._initializationMethods.one_greedy_nearest_neighbour_rest_random_valid(
-			self.settings.initialization.population_size,
-			self.distance_matrix)
+		initial_individuals = self._controller.generate_population_method()(self.distance_matrix)
 		self.population = Population(initial_individuals, self.settings.initialization.population_size,
 									 self.distance_matrix)
 
@@ -76,31 +56,31 @@ class EvolutionaryAlgorithm:
 														   self.settings.fitness.shape_exp)
 
 	def select(self) -> IndividualProtocol:
-		return self._selectionMethods.k_tournament(self.population.individuals)
+		return self._controller.selection_method()(self.population.individuals)
 
 	def recombination(self) -> None:
 		self._offsprings = []
 		for _ in range(self.settings.initialization.population_size):
 			parent1 = self.select()
 			parent2 = self.select()
-			offspring1, offspring2 = self._recombinationMethods.order_crossover(parent1, parent2)
+			offspring1, offspring2 = self._controller.recombination_method()(parent1, parent2)
 			self._offsprings.append(offspring1)
 			self._offsprings.append(offspring2)
 
 	def mutation(self):
 		for individual in self._offsprings:
 			if random.random() < self.settings.mutation.alpha:
-				self._mutationMethods.reverse_subtour(individual)
+				self._controller.mutation_method()(individual)
 				individual.dirty = True
 
 	def local_optimisation(self):
 		self._offsprings.sort(key=lambda x: x.fitness)  # from low to high (worst to best)
 		for i in range(round((self.population.size * self.settings.local_optimisation.proportion_worst))):
 			if random.random() < self.settings.local_optimisation.opt_probability:
-				self._localOptimisationMethods.k_opt(self._offsprings[i], NeighbourMethods.swap_edges)
+				self._controller.local_optimisation_method()(self._offsprings[i])
 
 	def elimination(self) -> None:
-		self._eliminationMethods.mixed_elitist_with_crowding(self.population, self._offsprings)
+		self._controller.elimination_method()(self.population, self._offsprings)
 
 	def insert_diversity(self):
-		self._eliminationMethods.replace_worst_with_random(self.population)
+		self._controller.insert_diversity_method()(self.population)
