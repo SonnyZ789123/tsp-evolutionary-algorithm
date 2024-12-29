@@ -93,4 +93,4 @@ class r0829897:
 			file.write(f"Best individual cycle length: {best_cycle_length:.0f}\n")
 			file.write("====================================================\n")
 
-		return 0
+		return elapsed_time, best_cycle_length
