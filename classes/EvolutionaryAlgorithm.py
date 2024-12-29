@@ -8,7 +8,6 @@ from methods.LocalOptimisationMethods import LocalOptimisationMethods
 from methods.NeighbourMethods import NeighbourMethods
 from methods.RecombinationMethods import RecombinationMethods
 from methods.SelectionMethods import SelectionMethods
-from methods.ConvergenceMethods import ConvergenceMethods
 from protocols.IndividualProtocol import IndividualProtocol
 from protocols.PopulationProtocol import PopulationProtocol
 from protocols.SettingsProtocol import SettingsProtocol
@@ -31,8 +30,9 @@ class EvolutionaryAlgorithm:
 		self._iteration += 1
 		if self._iteration >= self.settings.initialization.max_iterations:
 			return True
-		# if ConvergenceMethods.variance_fitness(self.population, self.settings.convergence.var_fitness_threshold):
-		# 	return True
+		# Don't use a convergence method like checking if the best fitness is the same for x iterations, because there
+		# is always a chance that we randomly generate a new best fitness
+		# So keep it running until the max iterations are reached, or time is up
 		return False
 
 	def update_fitness_sharing_proportions(self) -> None:
