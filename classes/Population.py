@@ -38,6 +38,8 @@ class Population:
 		""" Calculate the mean fitness of the population, filtering out invalid cycles. """
 		valid_individuals_fitness = [individual.fitness for individual in self.individuals if
 									 is_valid_cycle(individual.cycle, self.distance_matrix)]
+		if len(valid_individuals_fitness) == 0:
+			return -INFINITY_REPRESENTATION
 		return sum(valid_individuals_fitness) / len(valid_individuals_fitness)
 
 	def best_fitness(self) -> float:

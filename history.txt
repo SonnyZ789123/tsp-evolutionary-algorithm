@@ -1188,3 +1188,98 @@ Time: 2024-12-29 21:00:53
 Elapsed time for solving TSP: 300.97 seconds
 Best individual cycle length: 166224
 ====================================================
+tour750.csv
+Time: 2024-12-29 21:26:43
+Elapsed time for solving TSP: 303.93 seconds
+Best individual cycle length: 204123
+====================================================
+tour750.csv
+Time: 2024-12-29 21:31:44
+Elapsed time for solving TSP: 300.56 seconds
+Best individual cycle length: 208488
+====================================================
+tour750.csv
+Time: 2024-12-29 21:36:47
+Elapsed time for solving TSP: 302.27 seconds
+Best individual cycle length: 204396
+====================================================
+tour50.csv
+Time: 2024-12-29 21:58:13
+Elapsed time for solving TSP: 29.76 seconds
+Best individual cycle length: 26100
+====================================================
+tour50.csv
+Time: 2024-12-29 21:58:58
+Elapsed time for solving TSP: 45.04 seconds
+Best individual cycle length: 28048
+====================================================
+tour50.csv
+Time: 2024-12-29 21:59:21
+Elapsed time for solving TSP: 21.84 seconds
+Best individual cycle length: 27555
+====================================================
+tour50.csv
+Time: 2024-12-29 21:59:46
+Elapsed time for solving TSP: 24.46 seconds
+Best individual cycle length: 26826
+====================================================
+tour50.csv
+Time: 2024-12-29 22:00:51
+Elapsed time for solving TSP: 23.90 seconds
+Best individual cycle length: 25899
+====================================================
+tour50.csv
+Time: 2024-12-29 22:01:27
+Elapsed time for solving TSP: 36.04 seconds
+Best individual cycle length: 27596
+====================================================
+tour50.csv
+Time: 2024-12-29 22:01:56
+Elapsed time for solving TSP: 28.72 seconds
+Best individual cycle length: 26628
+====================================================
+tour50.csv
+Time: 2024-12-29 22:02:20
+Elapsed time for solving TSP: 23.69 seconds
+Best individual cycle length: 26806
+====================================================
+tour50.csv
+Time: 2024-12-29 22:02:39
+Elapsed time for solving TSP: 18.28 seconds
+Best individual cycle length: 26665
+====================================================
+tour750.csv
+Time: 2024-12-29 22:10:25
+Elapsed time for solving TSP: 300.68 seconds
+Best individual cycle length: 214440
+====================================================
+tour750.csv
+Time: 2024-12-29 22:15:30
+Elapsed time for solving TSP: 304.39 seconds
+Best individual cycle length: 205025
+====================================================
+tour750.csv
+Time: 2024-12-29 22:27:16
+Elapsed time for solving TSP: 303.32 seconds
+Best individual cycle length: 204349
+====================================================
+tour750.csv
+Time: 2024-12-29 22:32:24
+Elapsed time for solving TSP: 307.10 seconds
+Best individual cycle length: 207580
+====================================================
+tour750.csv
+Time: 2024-12-29 22:37:26
+Elapsed time for solving TSP: 301.44 seconds
+Best individual cycle length: 210904
+====================================================
+tour750.csv
+Time: 2024-12-29 22:42:30
+Elapsed time for solving TSP: 303.40 seconds
+Best individual cycle length: 206623
+====================================================
+tour750.csv
+Time: 2024-12-29 22:47:32
+Elapsed time for solving TSP: 302.41 seconds
+Best individual cycle length: 204742
+====================================================
