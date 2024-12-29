@@ -10,6 +10,7 @@ class Initialization:
 
 class Convergence:
 	var_fitness_threshold: float = 0.01
+	best_fitness_count_threshold: int = 25
 
 
 class Selection:

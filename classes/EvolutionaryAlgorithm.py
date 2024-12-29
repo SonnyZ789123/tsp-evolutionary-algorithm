@@ -16,6 +16,8 @@ from protocols.SettingsProtocol import SettingsProtocol
 class EvolutionaryAlgorithm:
 	settings: SettingsProtocol
 	population: PopulationProtocol
+	_best_fitness: float = -1
+	_best_fitness_convergence_count: int = 0
 	_iteration: int = 0
 	_offsprings: list[IndividualProtocol] = []
 	_converged: bool
@@ -30,9 +32,16 @@ class EvolutionaryAlgorithm:
 		self._iteration += 1
 		if self._iteration >= self.settings.initialization.max_iterations:
 			return True
-		# Don't use a convergence method like checking if the best fitness is the same for x iterations, because there
-		# is always a chance that we randomly generate a new best fitness
-		# So keep it running until the max iterations are reached, or time is up
+		# Keep the best fitness count threshold high enough because there is always a chance we randomly generate a
+		# better solution
+		new_best_fitness = self.population.best_fitness()
+		if self._best_fitness == new_best_fitness:
+			self._best_fitness_convergence_count += 1
+			if self._best_fitness_convergence_count >= self.settings.convergence.best_fitness_count_threshold:
+				return True
+		else:
+			self._best_fitness = new_best_fitness
+			self._best_fitness_convergence_count = 0
 		return False
 
 	def update_fitness_sharing_proportions(self) -> None:

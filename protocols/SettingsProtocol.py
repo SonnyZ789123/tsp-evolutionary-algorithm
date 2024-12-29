@@ -19,6 +19,8 @@ class ConvergenceProtocol(Protocol):
 	# """ The threshold for difference between mean and best fitness, between 0 and 1. """
 	var_fitness_threshold: float
 	""" The threshold for variance of fitness, between 0 and 1. """
+	best_fitness_count_threshold: int = 30
+	""" The amount of iterations the best fitness can stay the same before the algorithm converges. """
 
 
 class SelectionProtocol(Protocol):
