@@ -1,10 +1,16 @@
 import numpy as np
 
 from protocols.IndividualProtocol import IndividualProtocol
+from protocols.SettingsProtocol import MutationSettingsProtocol
 from utils.cycle_utils import is_valid_cycle
 
 
 class MutationMethods:
+	_settings: MutationSettingsProtocol
+
+	def __init__(self, settings: MutationSettingsProtocol):
+		self._settings = settings
+
 	@staticmethod
 	def swap(individual: IndividualProtocol) -> None:
 		"""

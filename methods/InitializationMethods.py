@@ -1,4 +1,4 @@
-from typing import List, cast
+from typing import List
 
 import numpy as np
 from numpy.typing import NDArray
@@ -6,6 +6,7 @@ from numpy.typing import NDArray
 from config.custom_types import DistanceMatrix, InitializationHeuristic, INFINITY_REPRESENTATION
 from protocols.IndividualProtocol import IndividualProtocol
 from classes.Individual import Individual
+from protocols.SettingsProtocol import InitializationSettingsProtocol
 
 
 class Heuristics:
@@ -31,6 +32,11 @@ class Heuristics:
 
 
 class InitializationMethods:
+	_settings: InitializationSettingsProtocol
+
+	def __init__(self, settings: InitializationSettingsProtocol):
+		self._settings = settings
+
 	@staticmethod
 	def generate_random_valid_individual(distance_matrix: DistanceMatrix) -> IndividualProtocol:
 		"""

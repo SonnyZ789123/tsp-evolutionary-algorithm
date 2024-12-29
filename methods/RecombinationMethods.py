@@ -4,9 +4,15 @@ import numpy as np
 
 from classes.Individual import Individual
 from protocols.IndividualProtocol import IndividualProtocol
+from protocols.SettingsProtocol import RecombinationSettingsProtocol
 
 
 class RecombinationMethods:
+	_settings: RecombinationSettingsProtocol
+
+	def __init__(self, settings: RecombinationSettingsProtocol):
+		self._settings = settings
+
 	@staticmethod
 	def deterministic_best_parent(parent1: IndividualProtocol, parent2: IndividualProtocol) -> IndividualProtocol:
 		"""Return the parent with the best fitness."""

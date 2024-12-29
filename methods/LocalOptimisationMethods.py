@@ -3,9 +3,15 @@ from typing import Callable, List
 from classes.Individual import Individual
 from config.custom_types import Cycle
 from protocols.IndividualProtocol import IndividualProtocol
+from protocols.SettingsProtocol import LocalOptimisationSettingsProtocol
 
 
 class LocalOptimisationMethods:
+	_settings: LocalOptimisationSettingsProtocol
+
+	def __init__(self, settings: LocalOptimisationSettingsProtocol):
+		self._settings = settings
+
 	@staticmethod
 	def _generate_neighbours(cycle: Cycle, neighbour_method: Callable[[Cycle], Cycle], pool_size: int, k: int) -> List[
 		Cycle]:

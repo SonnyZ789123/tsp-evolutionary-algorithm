@@ -1,5 +1,5 @@
-from protocols.SettingsProtocol import FitnessProtocol, InitializationProtocol, ConvergenceProtocol, SelectionProtocol, \
-	MutationProtocol, RecombinationProtocol, LocalOptimisationProtocol, EliminationProtocol
+from protocols.SettingsProtocol import FitnessSettingsProtocol, InitializationSettingsProtocol, ConvergenceSettingsProtocol, SelectionSettingsProtocol, \
+	MutationSettingsProtocol, RecombinationSettingsProtocol, LocalOptimisationSettingsProtocol, EliminationSettingsProtocol
 
 
 class Fitness:
@@ -18,7 +18,7 @@ class Convergence:
 
 
 class Selection:
-	k_tournament: int = 3
+	k_tournament_k: int = 3
 
 
 class Mutation:
@@ -48,14 +48,14 @@ class Elimination:
 
 
 class Settings:
-	fitness: FitnessProtocol = Fitness()
-	initialization: InitializationProtocol = Initialization()
-	convergence: ConvergenceProtocol = Convergence()
-	selection: SelectionProtocol = Selection()
-	mutation: MutationProtocol = Mutation()
-	recombination: RecombinationProtocol = Recombination()
-	local_optimisation: LocalOptimisationProtocol = LocalOptimisation()
-	elimination: EliminationProtocol = Elimination()
+	fitness: FitnessSettingsProtocol = Fitness()
+	initialization: InitializationSettingsProtocol = Initialization()
+	convergence: ConvergenceSettingsProtocol = Convergence()
+	selection: SelectionSettingsProtocol = Selection()
+	mutation: MutationSettingsProtocol = Mutation()
+	recombination: RecombinationSettingsProtocol = Recombination()
+	local_optimisation: LocalOptimisationSettingsProtocol = LocalOptimisation()
+	elimination: EliminationSettingsProtocol = Elimination()
 
 	def __init__(self, problem_size: int):
 		if problem_size >= 200:
