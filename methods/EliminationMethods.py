@@ -112,8 +112,9 @@ class EliminationMethods:
 		offsprings_selected = sorted_offsprings[:size]
 		for offspring in offsprings_selected:
 			closest = SelectionMethods.k_tournament_static(population.individuals, k,
-													key=lambda individual: SimilarityMethods.hamming(offspring.cycle,
-																									 individual.cycle))
+														   key=lambda individual: SimilarityMethods.hamming(
+															   offspring.cycle,
+															   individual.cycle))
 			population.individuals.remove(closest)
 			population.individuals.append(offspring)
 
@@ -139,10 +140,11 @@ class EliminationMethods:
 		for i in range(offsprings_size):
 			current_offspring = sorted_offspring.pop(i)
 			selected_from_offspring.append(current_offspring)
-			closest = SelectionMethods.k_tournament_static(sorted_offspring, self._settings.mixed_elitist_with_crowding_k,
-													key=lambda individual: SimilarityMethods.hamming(
-														current_offspring.cycle,
-														individual.cycle))
+			closest = SelectionMethods.k_tournament_static(sorted_offspring,
+														   self._settings.mixed_elitist_with_crowding_k,
+														   key=lambda individual: SimilarityMethods.hamming(
+															   current_offspring.cycle,
+															   individual.cycle))
 			sorted_offspring.remove(closest)
 
 		population.individuals = selected_from_current + selected_from_offspring
@@ -159,3 +161,39 @@ class EliminationMethods:
 		for _ in range(amount_to_replace):
 			population.individuals.append(
 				InitializationMethods.generate_random_valid_individual(population.distance_matrix))
+
+	def elitist_k_tournament(self, population: PopulationProtocol, offsprings: List[IndividualProtocol]) -> None:
+		"""
+		Choose a new population based on k-tournament selection.
+		:param population: The population.
+		:param offsprings: The offsprings.
+		"""
+		merged_population = population.individuals + offsprings
+		new_generation = []
+		for _ in range(population.size):
+			selected = SelectionMethods.k_tournament_static(merged_population, self._settings.elitist_k_tournament_k)
+			new_generation.append(selected)
+			merged_population.remove(selected)
+
+		assert len(new_generation) == population.size
+		population.individuals = new_generation
+
+	def elitist_k_tournament_keep_s_best(self, population: PopulationProtocol,
+										 offsprings: List[IndividualProtocol]) -> None:
+		"""
+		Choose a new population based on k-tournament selection.
+		:param population: The population.
+		:param offsprings: The offsprings.
+		"""
+		merged_population = population.individuals + offsprings
+		merged_population.sort(key=lambda individual: individual.fitness, reverse=True)
+		new_generation = merged_population[:self._settings.elitist_k_tournament_keep_s_best_s]
+		merged_population = merged_population[self._settings.elitist_k_tournament_keep_s_best_s:]
+		for _ in range(population.size - self._settings.elitist_k_tournament_keep_s_best_s):
+			selected = SelectionMethods.k_tournament_static(merged_population,
+															self._settings.elitist_k_tournament_keep_s_best_k)
+			new_generation.append(selected)
+			merged_population.remove(selected)
+
+		assert len(new_generation) == population.size
+		population.individuals = new_generation

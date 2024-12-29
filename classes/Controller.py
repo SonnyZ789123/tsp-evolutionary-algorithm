@@ -41,7 +41,8 @@ class Controller:
 	def selection_method(self) -> Callable[[List[IndividualProtocol]], IndividualProtocol]:
 		return lambda individuals: self._selectionMethods.k_tournament(individuals)
 
-	def recombination_method(self) -> Callable[[IndividualProtocol, IndividualProtocol], Tuple[IndividualProtocol, ...]]:
+	def recombination_method(self) -> Callable[
+		[IndividualProtocol, IndividualProtocol], Tuple[IndividualProtocol, ...]]:
 		return lambda parent1, parent2: self._recombinationMethods.order_crossover(parent1, parent2)
 
 	def mutation_method(self) -> Callable[[IndividualProtocol], None]:
@@ -57,11 +58,17 @@ class Controller:
 		if self.settings.problem_size < 100:
 			return lambda population, offsprings: self._eliminationMethods.mixed_elitist(population, offsprings)
 
-		return lambda population, offsprings: self._eliminationMethods.mixed_elitist_with_crowding(population,
-																								   offsprings)
+		if 100 < self.settings.problem_size < 400:
+			return lambda population, offsprings: self._eliminationMethods.mixed_elitist_with_crowding(population,
+																									   offsprings)
+
+		return lambda population, offsprings: self._eliminationMethods.elitist_k_tournament_keep_s_best(population, offsprings)
 
 	def insert_diversity_method(self) -> Callable[[PopulationProtocol], None]:
 		if self.settings.problem_size < 100:
 			return lambda _: None
 
-		return lambda population: self._eliminationMethods.replace_worst_with_random(population)
+		if 100 < self.settings.problem_size < 400:
+			return lambda population: self._eliminationMethods.replace_worst_with_random(population)
+
+		return lambda _: None

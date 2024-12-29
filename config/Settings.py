@@ -1,5 +1,7 @@
-from protocols.SettingsProtocol import FitnessSettingsProtocol, InitializationSettingsProtocol, ConvergenceSettingsProtocol, SelectionSettingsProtocol, \
-	MutationSettingsProtocol, RecombinationSettingsProtocol, LocalOptimisationSettingsProtocol, EliminationSettingsProtocol
+from protocols.SettingsProtocol import FitnessSettingsProtocol, InitializationSettingsProtocol, \
+	ConvergenceSettingsProtocol, SelectionSettingsProtocol, \
+	MutationSettingsProtocol, RecombinationSettingsProtocol, LocalOptimisationSettingsProtocol, \
+	EliminationSettingsProtocol
 
 
 class Fitness:
@@ -14,7 +16,7 @@ class Initialization:
 
 class Convergence:
 	var_fitness_threshold: float = 0.01
-	best_fitness_count_threshold: int = 25
+	best_fitness_count_threshold: int = 30
 
 
 class Selection:
@@ -23,6 +25,7 @@ class Selection:
 
 class Mutation:
 	alpha: float = 0.1
+	alpha_decay_rate: float = 0
 
 
 class Recombination:
@@ -45,6 +48,9 @@ class Elimination:
 	mixed_elitist_with_crowding_proportion: float = 0.5
 	mixed_elitist_with_crowding_k: int = 5
 	replace_worst_with_random_k: float = 0.3
+	elitist_k_tournament_k: int = 3
+	elitist_k_tournament_keep_s_best_k: int = 3
+	elitist_k_tournament_keep_s_best_s: int = 5
 
 
 class Settings:
@@ -66,9 +72,16 @@ class Settings:
 			pass
 		elif 200 <= problem_size < 400:
 			self.initialization.population_size = 400
-		elif 400 <= problem_size < 600:
+		elif 400 <= problem_size:
 			self.initialization.population_size = 200
-		elif 600 <= problem_size < 800:
+			self.convergence.best_fitness_count_threshold = 100
+			self.local_optimisation.proportion_worst = 0.3
+			self.local_optimisation.k_opt_pool_size = 5
+			self.mutation.alpha = 0.5
+			self.mutation.alpha_decay_rate = 0.001
+			self.elimination.mixed_elitist_with_crowding_k = 7
+			self.elimination.mixed_elitist_with_crowding_proportion = 0.4  # More from the offsprings (which have mutated)
+		elif 600 <= problem_size:
 			self.initialization.population_size = 100
 		else:
 			self.initialization.population_size = 50

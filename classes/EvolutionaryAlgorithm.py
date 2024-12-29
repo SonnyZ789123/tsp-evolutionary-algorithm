@@ -1,6 +1,8 @@
 import random
 from warnings import deprecated
 
+import numpy as np
+
 from classes.Controller import Controller
 from classes.Population import Population
 from config.Settings import Settings
@@ -72,6 +74,10 @@ class EvolutionaryAlgorithm:
 			if random.random() < self.settings.mutation.alpha:
 				self._controller.mutation_method()(individual)
 				individual.dirty = True
+
+		# quadratic decay of the mutation probability
+		self.settings.mutation.alpha = self.settings.mutation.alpha * (
+					1 - (self.settings.mutation.alpha_decay_rate * self._iteration) ** 2)
 
 	def local_optimisation(self):
 		self._offsprings.sort(key=lambda x: x.fitness)  # from low to high (worst to best)

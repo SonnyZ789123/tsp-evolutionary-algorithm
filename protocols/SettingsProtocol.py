@@ -19,7 +19,7 @@ class ConvergenceSettingsProtocol(Protocol):
 	# """ The threshold for difference between mean and best fitness, between 0 and 1. """
 	var_fitness_threshold: float
 	""" The threshold for variance of fitness, between 0 and 1. """
-	best_fitness_count_threshold: int = 30
+	best_fitness_count_threshold: int
 	""" The amount of iterations the best fitness can stay the same before the algorithm converges. """
 
 
@@ -31,6 +31,8 @@ class SelectionSettingsProtocol(Protocol):
 class MutationSettingsProtocol(Protocol):
 	alpha: float
 	""" The probability of mutation. """
+	alpha_decay_rate: float
+	""" The decay rate of the mutation probability. """
 
 
 class RecombinationSettingsProtocol(Protocol):
@@ -65,6 +67,13 @@ class EliminationSettingsProtocol(Protocol):
 	""" The number of individuals to consider in the k-tournament for the crowding. """
 	replace_worst_with_random_k: float
 	""" The worst proportion of the population to replace with random individuals. """
+	elitist_k_tournament_k: int
+	""" The number of individuals to consider in the k-tournament for elitism. """
+	elitist_k_tournament_keep_s_best_k: int = 3
+	""" The number of individuals to keep from the k-tournament for elitism. """
+	elitist_k_tournament_keep_s_best_s: int = 5
+	""" The number of best individuals to keep. """
+
 
 
 class SettingsProtocol(Protocol):
