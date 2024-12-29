@@ -36,7 +36,6 @@ class EvolutionaryAlgorithm:
 	def __init__(self, distance_matrix: DistanceMatrix):
 		problem_size = distance_matrix.shape[0]
 		self.settings = Settings(problem_size)
-		self.population = Population(self.settings.initialization.population_size, distance_matrix)
 
 		self._initializationMethods = InitializationMethods(self.settings.initialization)
 		self._selectionMethods = SelectionMethods(self.settings.selection)
@@ -45,6 +44,11 @@ class EvolutionaryAlgorithm:
 		self._localOptimisationMethods = LocalOptimisationMethods(self.settings.local_optimisation)
 		self._eliminationMethods = EliminationMethods(self.settings.elimination)
 
+	def initialize_population(self) -> None:
+		initial_individuals = self._initializationMethods.one_greedy_nearest_neighbour_rest_random_valid(
+			self.population.size,
+			self.population.distance_matrix)
+		self.population = Population(initial_individuals, self.population.size, self.population.distance_matrix)
 
 	@property
 	def converged(self) -> bool:

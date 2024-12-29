@@ -3,7 +3,6 @@ from typing import List
 import numpy as np
 
 from config.custom_types import DistanceMatrix, INFINITY_REPRESENTATION
-from methods.InitializationMethods import InitializationMethods, Heuristics
 from methods.SimilarityMethods import SimilarityMethods
 from protocols.IndividualProtocol import IndividualProtocol
 from utils.cycle_utils import is_valid_cycle
@@ -14,16 +13,15 @@ class Population:
 	distance_matrix: DistanceMatrix
 	individuals: list[IndividualProtocol]
 
-	def __init__(self, size: int, distance_matrix: DistanceMatrix):
+	def __init__(self, individuals: List[IndividualProtocol], size: int, distance_matrix: DistanceMatrix):
+		assert size == len(individuals)
+
 		# replace every occurrence of "Inf" with -1
 		distance_matrix[distance_matrix == float('inf')] = INFINITY_REPRESENTATION
 
 		self.size = size
 		self.distance_matrix = distance_matrix
-		greedy_individual = InitializationMethods.generate_greedy_individual(distance_matrix,
-																			 Heuristics.nearest_neighbour)
-		random_individuals = InitializationMethods.generate_random_valid_population(size - 1, distance_matrix)
-		self.individuals = [greedy_individual] + random_individuals
+		self.individuals = individuals
 
 	def update_fitness_sharing_proportions(self, similarity_threshold: float = 0.5, shape_exp: float = 1) -> None:
 		for individual in self.individuals:

@@ -36,6 +36,7 @@ class r0829897:
 
 		# Time the algorithm
 		start_time = time.time()
+		evolutionary_algorithm.initialize_population()
 		while not evolutionary_algorithm.converged:
 			# evolutionary_algorithm.update_fitness_sharing_proportions()
 			evolutionary_algorithm.select()

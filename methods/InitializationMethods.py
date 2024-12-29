@@ -136,3 +136,11 @@ class InitializationMethods:
 		for _ in range(size):
 			individuals.append(InitializationMethods.generate_greedy_individual(distance_matrix, heuristic))
 		return individuals
+
+	@staticmethod
+	def one_greedy_nearest_neighbour_rest_random_valid(size: int, distance_matrix: DistanceMatrix) -> List[
+		IndividualProtocol]:
+		greedy_individual = InitializationMethods.generate_greedy_individual(distance_matrix,
+																			 Heuristics.nearest_neighbour)
+		random_individuals = InitializationMethods.generate_random_valid_population(size - 1, distance_matrix)
+		return [greedy_individual] + random_individuals

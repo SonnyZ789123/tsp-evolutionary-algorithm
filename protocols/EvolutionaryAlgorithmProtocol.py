@@ -11,6 +11,9 @@ class EvolutionaryAlgorithmProtocol(Protocol):
 	def converged(self) -> bool:
 		...
 
+	def initialize_population(self) -> None:
+		...
+
 	def update_fitness_sharing_proportions(self) -> None:
 		...
 
