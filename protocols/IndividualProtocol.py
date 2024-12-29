@@ -28,6 +28,3 @@ class IndividualProtocol(Protocol):
 	def get_fitness_internal(self) -> float:
 		""" The unmodified fitness of the individual. """
 		...
-
-	def mutate(self) -> None:
-		...

@@ -18,6 +18,7 @@ from protocols.SettingsProtocol import SettingsProtocol
 
 class EvolutionaryAlgorithm:
 	settings: SettingsProtocol
+	distance_matrix: DistanceMatrix
 	population: PopulationProtocol
 
 	_best_fitness: float = -1
@@ -34,6 +35,7 @@ class EvolutionaryAlgorithm:
 	_eliminationMethods: EliminationMethods
 
 	def __init__(self, distance_matrix: DistanceMatrix):
+		self.distance_matrix = distance_matrix
 		problem_size = distance_matrix.shape[0]
 		self.settings = Settings(problem_size)
 
@@ -46,9 +48,10 @@ class EvolutionaryAlgorithm:
 
 	def initialize_population(self) -> None:
 		initial_individuals = self._initializationMethods.one_greedy_nearest_neighbour_rest_random_valid(
-			self.population.size,
-			self.population.distance_matrix)
-		self.population = Population(initial_individuals, self.population.size, self.population.distance_matrix)
+			self.settings.initialization.population_size,
+			self.distance_matrix)
+		self.population = Population(initial_individuals, self.settings.initialization.population_size,
+									 self.distance_matrix)
 
 	@property
 	def converged(self) -> bool:
@@ -87,7 +90,8 @@ class EvolutionaryAlgorithm:
 	def mutation(self):
 		for individual in self._offsprings:
 			if random.random() < self.settings.mutation.alpha:
-				individual.mutate()
+				self._mutationMethods.reverse_subtour(individual)
+				individual.dirty = True
 
 	def local_optimisation(self):
 		self._offsprings.sort(key=lambda x: x.fitness)  # from low to high (worst to best)

@@ -41,9 +41,5 @@ class Individual(IndividualProtocol):
 	def get_fitness_internal(self) -> float:
 		return FitnessMethods.negative_of_length(self)
 
-	def mutate(self) -> None:
-		MutationMethods.reverse_subtour(self)
-		self.dirty = True
-
 	def __str__(self) -> str:
 		return str(self.cycle) + " : " + str(self.fitness)
