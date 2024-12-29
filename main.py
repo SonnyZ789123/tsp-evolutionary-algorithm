@@ -6,4 +6,5 @@ def main():
 	solve_tsp.optimize("tour50.csv")
 
 if __name__ == "__main__":
-	main()
+	for _ in range(10):
+		main()

@@ -68,6 +68,7 @@ class EliminationSettingsProtocol(Protocol):
 
 
 class SettingsProtocol(Protocol):
+	problem_size: int
 	fitness: FitnessSettingsProtocol
 	initialization: InitializationSettingsProtocol
 	convergence: ConvergenceSettingsProtocol

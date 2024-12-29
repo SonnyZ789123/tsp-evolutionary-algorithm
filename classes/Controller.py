@@ -54,8 +54,14 @@ class Controller:
 		return lambda cycle: self._neighbourMethods.swap_edges(cycle)
 
 	def elimination_method(self) -> Callable[[PopulationProtocol, List[IndividualProtocol]], None]:
+		if self.settings.problem_size < 100:
+			return lambda population, offsprings: self._eliminationMethods.mixed_elitist(population, offsprings)
+
 		return lambda population, offsprings: self._eliminationMethods.mixed_elitist_with_crowding(population,
 																								   offsprings)
 
 	def insert_diversity_method(self) -> Callable[[PopulationProtocol], None]:
+		if self.settings.problem_size < 100:
+			return lambda _: None
+
 		return lambda population: self._eliminationMethods.replace_worst_with_random(population)

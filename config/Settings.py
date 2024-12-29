@@ -9,7 +9,7 @@ class Fitness:
 
 class Initialization:
 	population_size: int = 500
-	max_iterations: int = 150
+	max_iterations: int = 300
 
 
 class Convergence:
@@ -48,6 +48,7 @@ class Elimination:
 
 
 class Settings:
+	problem_size: int
 	fitness: FitnessSettingsProtocol = Fitness()
 	initialization: InitializationSettingsProtocol = Initialization()
 	convergence: ConvergenceSettingsProtocol = Convergence()
@@ -58,10 +59,16 @@ class Settings:
 	elimination: EliminationSettingsProtocol = Elimination()
 
 	def __init__(self, problem_size: int):
-		if problem_size >= 200:
+		self.problem_size = problem_size
+		if problem_size < 100:
+			self.elimination.mixed_elitism_proportion = 0.3
+		elif 100 <= problem_size < 200:
+			pass
+		elif 200 <= problem_size < 400:
 			self.initialization.population_size = 400
-			self.max_iterations = 200
-		if problem_size >= 500:
+		elif 400 <= problem_size < 600:
 			self.initialization.population_size = 200
-		if problem_size >= 750:
+		elif 600 <= problem_size < 800:
 			self.initialization.population_size = 100
+		else:
+			self.initialization.population_size = 50
