@@ -25,17 +25,15 @@ class LocalOptimisationMethods:
 				LocalOptimisationMethods._generate_neighbours(neighbour, neighbour_method, pool_size, k - 1))
 		return neighbours
 
-	@staticmethod
-	def k_opt(individual: IndividualProtocol, neighbour_method: Callable[[Cycle], Cycle],
-			  pool_size: int = 3, k: int = 2) -> None:
+	def k_opt(self, individual: IndividualProtocol, neighbour_method: Callable[[Cycle], Cycle]) -> None:
 		"""
 		Apply k-opt local search to the individual.
-		:param pool_size: The amount of neighbours to generate
 		:param neighbour_method: The method to generate a neighbour
 		:param individual: The individual
-		:param k: The value of k for k-opt
 		"""
-		neighbours = LocalOptimisationMethods._generate_neighbours(individual.cycle, neighbour_method, pool_size, k)
+		neighbours = LocalOptimisationMethods._generate_neighbours(individual.cycle, neighbour_method,
+																   self._settings.k_opt_pool_size,
+																   self._settings.k_opt_k)
 		neighbour_individuals = [Individual(cycle, individual.distance_matrix) for cycle in neighbours]
 		best_neighbour = max(neighbour_individuals, key=lambda neighbour: neighbour.fitness)
 

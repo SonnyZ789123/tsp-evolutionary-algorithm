@@ -97,9 +97,7 @@ class EvolutionaryAlgorithm:
 		self._offsprings.sort(key=lambda x: x.fitness)  # from low to high (worst to best)
 		for i in range(round((self.population.size * self.settings.local_optimisation.proportion_worst))):
 			if random.random() < self.settings.local_optimisation.opt_probability:
-				self._localOptimisationMethods.k_opt(self._offsprings[i], NeighbourMethods.swap_edges,
-													 self.settings.local_optimisation.k_opt_pool_size,
-													 self.settings.local_optimisation.k_opt_k)
+				self._localOptimisationMethods.k_opt(self._offsprings[i], NeighbourMethods.swap_edges)
 
 	def elimination(self) -> None:
 		self._eliminationMethods.mixed_elitist_with_crowding(self.population, self._offsprings)
