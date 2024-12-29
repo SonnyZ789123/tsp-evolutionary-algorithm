@@ -12,7 +12,8 @@
 - recombination: `order_crossover`
 - mutation: `reverse_subtour` with `alpha=0.1`
 - local optimisation: `k_opt` with `proportion_worst=0.5`, `opt_probability=0.5`, `k_opt_pool_size=5`, `k_opt_k=2`
-- elimination: `mixed_elitist_with_crowding` with `mixed_elitism_rest_merged_random_mixed_elitist_proportion=0.5`, `mixed_elitism_rest_merged_random_proportion_size=0.5`
+- elimination: `mixed_elitist_with_crowding` with `mixed_elitist_with_crowding_proportion=0.5`,
+  `mixed_elitist_with_crowding_k=5`
 - insert diversity: `replace_worst_with_random` with `replace_worst_with_random_k=0.3`
 
 ---
@@ -97,8 +98,8 @@
 - recombination: `order_crossover`
 - mutation: `reverse_subtour` with `alpha=0.1`
 - local optimisation: None
-- elimination: `mixed_elitist_with_crowding` with `mixed_elitism_rest_merged_random_mixed_elitist_proportion=0.5`,
-  `mixed_elitism_rest_merged_random_proportion_size=0.5`
+- elimination: `mixed_elitist_with_crowding` with `mixed_elitist_with_crowding_proportion=0.5`,
+  `mixed_elitist_with_crowding_k=5`
 - insert diversity: None
 
 ---
