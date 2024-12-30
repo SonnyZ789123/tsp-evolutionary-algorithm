@@ -83,5 +83,5 @@ class Settings:
 			self.elimination.mixed_elitist_with_crowding_proportion = 0.4  # More from the offsprings (which have mutated)
 		elif 600 <= problem_size:
 			self.initialization.population_size = 100
-		else:
+		elif 800 <= problem_size:
 			self.initialization.population_size = 50
