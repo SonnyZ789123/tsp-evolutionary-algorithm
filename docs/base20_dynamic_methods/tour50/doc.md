@@ -527,7 +527,7 @@ The average elapsed time is **9.56 seconds**, and the average best cycle length 
 - mutation: `reverse_subtour` with `alpha=0.1`
 - local optimisation: None
 - elimination: `mixed_elitist` with `mixed_elitism_proportion=0.3`
-- insert diversity: None
+- insert diversity: `replace_worst_with_random` with `replace_worst_with_random_k=0.3`
 
 ---
 
@@ -598,58 +598,246 @@ The average elapsed time is **9.56 seconds**, and the average best cycle length 
 
 ---
 
-- Elapsed time for solving TSP: 20.89 seconds
-- Best individual cycle length: 25589
+Elapsed time for solving TSP: 20.89 seconds
+Best individual cycle length: 25589
+Elapsed time for solving TSP: 13.77 seconds
+Best individual cycle length: 28334
+Elapsed time for solving TSP: 16.72 seconds
+Best individual cycle length: 26560
+Elapsed time for solving TSP: 15.31 seconds
+Best individual cycle length: 26835
+Elapsed time for solving TSP: 12.74 seconds
+Best individual cycle length: 27136
+Elapsed time for solving TSP: 15.33 seconds
+Best individual cycle length: 26171
+Elapsed time for solving TSP: 14.89 seconds
+Best individual cycle length: 26261
+Elapsed time for solving TSP: 12.08 seconds
+Best individual cycle length: 28240
+Elapsed time for solving TSP: 12.73 seconds
+Best individual cycle length: 25966
+Elapsed time for solving TSP: 16.59 seconds
+Best individual cycle length: 26430
+Elapsed time for solving TSP: 22.94 seconds
+Best individual cycle length: 25927
+Elapsed time for solving TSP: 14.87 seconds
+Best individual cycle length: 25986
+Elapsed time for solving TSP: 21.17 seconds
+Best individual cycle length: 26652
+Elapsed time for solving TSP: 17.72 seconds
+Best individual cycle length: 28314
+Elapsed time for solving TSP: 17.36 seconds
+Best individual cycle length: 27960
+Elapsed time for solving TSP: 20.72 seconds
+Best individual cycle length: 27607
+Elapsed time for solving TSP: 15.08 seconds
+Best individual cycle length: 26778
+Elapsed time for solving TSP: 11.35 seconds
+Best individual cycle length: 25994
+Elapsed time for solving TSP: 16.99 seconds
+Best individual cycle length: 26859
+Elapsed time for solving TSP: 13.48 seconds
+Best individual cycle length: 28268
+
+Average Elapsed Time: 17.17
+Average Cycle Length: 27034.57
+---
+
+> Average Elapsed Time: 16.14 seconds
+
+> Average Cycle Length: 26893.39
+
+## Iteration 9 (latest best iteration with `elitisit_k_tournament_keep_s_best` elimination)
+
+> Average to beat: Cycle Length: 26799.0
+
+- selection: `k_tournament` with `k=3`
+- recombination: `order_crossover`
+- mutation: `reverse_subtour` with `alpha=0.1`
+- local optimisation: `k_opt` with `proportion_worst=0.5`, `opt_probability=0.5`, `k_opt_pool_size=5`, `k_opt_k=2`
+- elimination: `elitisit_k_tournament_keep_s_best` with `elitisit_k_tournament_keep_s_best_k=3`,
+  `elitisit_k_tournament_keep_s_best_s=5`
+- insert diversity: None
 
 ---
 
-- Elapsed time for solving TSP: 13.77 seconds
-- Best individual cycle length: 28334
+Elapsed time for solving TSP: 27.43 seconds
+Best individual cycle length: 26627
+Elapsed time for solving TSP: 22.00 seconds
+Best individual cycle length: 26970
+Elapsed time for solving TSP: 29.09 seconds
+Best individual cycle length: 26599
+Elapsed time for solving TSP: 14.17 seconds
+Best individual cycle length: 27000
+Elapsed time for solving TSP: 25.12 seconds
+Best individual cycle length: 26267
+Elapsed time for solving TSP: 18.00 seconds
+Best individual cycle length: 26141
+Elapsed time for solving TSP: 32.84 seconds
+Best individual cycle length: 28707
+Elapsed time for solving TSP: 20.59 seconds
+Best individual cycle length: 26555
+Elapsed time for solving TSP: 12.03 seconds
+Best individual cycle length: 28123
+Elapsed time for solving TSP: 32.80 seconds
+Best individual cycle length: 26235
+Elapsed time for solving TSP: 19.43 seconds
+Best individual cycle length: 27349
+Elapsed time for solving TSP: 19.37 seconds
+Best individual cycle length: 26166
+Elapsed time for solving TSP: 27.60 seconds
+Best individual cycle length: 25873
+Elapsed time for solving TSP: 27.36 seconds
+Best individual cycle length: 27134
+Elapsed time for solving TSP: 30.62 seconds
+Best individual cycle length: 28281
+Elapsed time for solving TSP: 13.48 seconds
+Best individual cycle length: 28274
+Elapsed time for solving TSP: 12.83 seconds
+Best individual cycle length: 26611
+Elapsed time for solving TSP: 17.63 seconds
+Best individual cycle length: 26147
+Elapsed time for solving TSP: 16.51 seconds
+Best individual cycle length: 28230
+Elapsed time for solving TSP: 15.96 seconds
+Best individual cycle length: 28073
 
 ---
 
-- Elapsed time for solving TSP: 16.72 seconds
-- Best individual cycle length: 26560
+> Average Elapsed Time: 21.75 seconds
+
+> Average Cycle Length: 27068.11
+
+## Iteration 10 (latest best iteration with `elitisit_k_tournament_keep_s_best` elimination)
+
+> Average to beat: Cycle Length: 26799.0
+
+- selection: `k_tournament` with `k=3`
+- recombination: `order_crossover`
+- mutation: `reverse_subtour` with `alpha=0.1`
+- local optimisation: None
+- elimination: `elitisit_k_tournament_keep_s_best` with `elitisit_k_tournament_keep_s_best_k=3`,
+  `elitisit_k_tournament_keep_s_best_s=5`
+- insert diversity: None
 
 ---
 
-- Elapsed time for solving TSP: 15.31 seconds
-- Best individual cycle length: 26835
+Elapsed time for solving TSP: 18.97 seconds
+Best individual cycle length: 27179
+Elapsed time for solving TSP: 16.09 seconds
+Best individual cycle length: 25986
+Elapsed time for solving TSP: 11.61 seconds
+Best individual cycle length: 28411
+Elapsed time for solving TSP: 10.53 seconds
+Best individual cycle length: 26407
+Elapsed time for solving TSP: 7.91 seconds
+Best individual cycle length: 28399
+Elapsed time for solving TSP: 11.52 seconds
+Best individual cycle length: 26922
+Elapsed time for solving TSP: 10.31 seconds
+Best individual cycle length: 26959
+Elapsed time for solving TSP: 14.11 seconds
+Best individual cycle length: 25746
+Elapsed time for solving TSP: 15.53 seconds
+Best individual cycle length: 27687
+Elapsed time for solving TSP: 11.67 seconds
+Best individual cycle length: 26754
+Elapsed time for solving TSP: 15.63 seconds
+Best individual cycle length: 26210
+Elapsed time for solving TSP: 15.19 seconds
+Best individual cycle length: 28016
+Elapsed time for solving TSP: 10.42 seconds
+Best individual cycle length: 26179
+Elapsed time for solving TSP: 11.52 seconds
+Best individual cycle length: 30216
+Elapsed time for solving TSP: 9.26 seconds
+Best individual cycle length: 26407
+Elapsed time for solving TSP: 9.58 seconds
+Best individual cycle length: 28077
+Elapsed time for solving TSP: 14.86 seconds
+Best individual cycle length: 28016
+Elapsed time for solving TSP: 16.13 seconds
+Best individual cycle length: 28621
+Elapsed time for solving TSP: 11.67 seconds
+Best individual cycle length: 28274
+Elapsed time for solving TSP: 16.69 seconds
+Best individual cycle length: 25950
 
 ---
 
-- Elapsed time for solving TSP: 12.74 seconds
-- Best individual cycle length: 27136
+> Average Elapsed Time: 12.96
+
+> Average Cycle Length: 27320.83
+
+## Iteration 11 (latest best iteration with `elitisit_k_tournament_keep_s_best` elimination and
+`replace_worst_with_random` insert diversity)
+
+> Average to beat: Cycle Length: 26799.0
+
+- selection: `k_tournament` with `k=3`
+- recombination: `order_crossover`
+- mutation: `reverse_subtour` with `alpha=0.1`
+- local optimisation: None
+- elimination: `elitisit_k_tournament_keep_s_best` with `elitisit_k_tournament_keep_s_best_k=3`,
+  `elitisit_k_tournament_keep_s_best_s=5`
+- insert diversity: `replace_worst_with_random` with `replace_worst_with_random_k=0.3`
 
 ---
 
-- Elapsed time for solving TSP: 15.33 seconds
-- Best individual cycle length: 26171
+Elapsed time for solving TSP: 15.68 seconds
+Best individual cycle length: 26977
+Elapsed time for solving TSP: 31.40 seconds
+Best individual cycle length: 28093
+Elapsed time for solving TSP: 14.01 seconds
+Best individual cycle length: 27950
+Elapsed time for solving TSP: 22.24 seconds
+Best individual cycle length: 27691
+Elapsed time for solving TSP: 15.53 seconds
+Best individual cycle length: 26249
+Elapsed time for solving TSP: 17.82 seconds
+Best individual cycle length: 26756
+Elapsed time for solving TSP: 23.36 seconds
+Best individual cycle length: 29528
+Elapsed time for solving TSP: 14.43 seconds
+Best individual cycle length: 26736
+Elapsed time for solving TSP: 28.01 seconds
+Best individual cycle length: 26760
+Elapsed time for solving TSP: 13.65 seconds
+Best individual cycle length: 28830
+Elapsed time for solving TSP: 14.40 seconds
+Best individual cycle length: 28274
+Elapsed time for solving TSP: 25.15 seconds
+Best individual cycle length: 29313
+Elapsed time for solving TSP: 13.35 seconds
+Best individual cycle length: 28231
+Elapsed time for solving TSP: 21.50 seconds
+Best individual cycle length: 26448
+Elapsed time for solving TSP: 18.98 seconds
+Best individual cycle length: 26386
+Elapsed time for solving TSP: 21.03 seconds
+Best individual cycle length: 26770
+Elapsed time for solving TSP: 14.12 seconds
+Best individual cycle length: 26932
+Elapsed time for solving TSP: 13.72 seconds
+Best individual cycle length: 28189
+Elapsed time for solving TSP: 16.21 seconds
+Best individual cycle length: 28240
+Elapsed time for solving TSP: 26.60 seconds
+Best individual cycle length: 26500
 
 ---
 
-- Elapsed time for solving TSP: 14.89 seconds
-- Best individual cycle length: 26261
+> Average Elapsed Time: 19.06
 
----
+> Average Cycle Length: 27542.65
 
-- Elapsed time for solving TSP: 12.08 seconds
-- Best individual cycle length: 28240
+meh
 
----
+## Final iteration 
 
-- Elapsed time for solving TSP: 12.73 seconds
-- Best individual cycle length: 25966
-
----
-
-- Elapsed time for solving TSP: 16.59 seconds
-- Best individual cycle length: 26430
-
----
-
-> Average Elapsed Time: 15.11 seconds
-
-> Average Cycle Length: 26752.2
-
-!!! New best
+- selection: `k_tournament` with `k=3`
+- recombination: `order_crossover`
+- mutation: `reverse_subtour` with `alpha=0.1`
+- local optimisation: `k_opt` with `proportion_worst=0.5`, `opt_probability=0.5`, `k_opt_pool_size=5`, `k_opt_k=2`
+- elimination: `mixed_elitist` with `mixed_elitism_proportion=0.3`
+- insert diversity: None
