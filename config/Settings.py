@@ -35,7 +35,7 @@ class Recombination:
 class LocalOptimisation:
 	proportion_worst: float = 0.5
 	opt_probability: float = 0.5
-	k_opt_pool_size: int = 5
+	k_opt_branch_size: int = 5
 	k_opt_k: int = 2
 
 
@@ -76,7 +76,7 @@ class Settings:
 			self.initialization.population_size = 200
 			self.convergence.best_fitness_count_threshold = 100
 			self.local_optimisation.proportion_worst = 0.3
-			self.local_optimisation.k_opt_pool_size = 5
+			self.local_optimisation.k_opt_branch_size = 5
 			self.mutation.alpha = 0.5
 			self.mutation.alpha_decay_rate = 0.001
 			self.elimination.mixed_elitist_with_crowding_k = 7

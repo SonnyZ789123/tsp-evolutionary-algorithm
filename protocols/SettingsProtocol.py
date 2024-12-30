@@ -44,7 +44,7 @@ class LocalOptimisationSettingsProtocol(Protocol):
 	""" The proportion of the worst individuals to consider for local optimisation. """
 	opt_probability: float = 0.2
 	""" The probability of local optimisation. """
-	k_opt_pool_size: int
+	k_opt_branch_size: int
 	""" The amount of neighbours to generate. """
 	k_opt_k: int
 	""" The value of k for k-opt, the depth of the search tree. """
