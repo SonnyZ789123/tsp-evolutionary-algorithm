@@ -48,3 +48,44 @@
 > Average Cycle Length: 82371.64
 
 Good enough.
+
+## Iteration 2 (use `elitisit_k_tournament_keep_s_best` elimination and no insert diversity)
+
+- selection: `k_tournament` with `k=3`
+- recombination: `order_crossover`
+- mutation: `reverse_subtour` with `alpha=0.1`, , `alpha_decay_rate=0`
+- local optimisation: `k_opt` with `proportion_worst=0.5`, `opt_probability=0.5`, `k_opt_pool_size=5`, `k_opt_k=2`
+- elimination: `elitisit_k_tournament_keep_s_best` with `elitisit_k_tournament_keep_s_best_k=3`,
+  `elitisit_k_tournament_keep_s_best_s=5`
+- insert diversity: None
+
+--- 
+
+- Elapsed time for solving TSP: 74.71 seconds
+- Best individual cycle length: 82543
+
+---
+
+- Elapsed time for solving TSP: 67.49 seconds
+- Best individual cycle length: 82475
+
+---
+
+- Elapsed time for solving TSP: 68.90 seconds
+- Best individual cycle length: 81517
+
+---
+
+- Elapsed time for solving TSP: 80.13 seconds
+- Best individual cycle length: 79096
+
+---
+
+- Elapsed time for solving TSP: 106.62 seconds
+- Best individual cycle length: 82012
+
+---
+
+> Average Elapsed Time: 79.57
+
+> Average Cycle Length: 81528.55

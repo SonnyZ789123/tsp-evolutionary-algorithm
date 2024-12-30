@@ -1283,3 +1283,28 @@ Time: 2024-12-29 22:47:32
 Elapsed time for solving TSP: 302.41 seconds
 Best individual cycle length: 204742
 ====================================================
+tour100.csv
+Time: 2024-12-30 10:39:38
+Elapsed time for solving TSP: 74.71 seconds
+Best individual cycle length: 82543
+====================================================
+tour100.csv
+Time: 2024-12-30 10:40:46
+Elapsed time for solving TSP: 67.49 seconds
+Best individual cycle length: 82475
+====================================================
+tour100.csv
+Time: 2024-12-30 10:41:55
+Elapsed time for solving TSP: 68.90 seconds
+Best individual cycle length: 81517
+====================================================
+tour100.csv
+Time: 2024-12-30 10:43:16
+Elapsed time for solving TSP: 80.13 seconds
+Best individual cycle length: 79096
+====================================================
+tour100.csv
+Time: 2024-12-30 10:45:03
+Elapsed time for solving TSP: 106.62 seconds
+Best individual cycle length: 82012
+====================================================

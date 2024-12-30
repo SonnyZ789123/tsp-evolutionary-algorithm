@@ -59,19 +59,21 @@ class Controller:
 			return lambda population, offsprings: self._eliminationMethods.mixed_elitist(population, offsprings)
 
 		if 100 <= self.settings.problem_size < 400:
-			return lambda population, offsprings: self._eliminationMethods.mixed_elitist_with_crowding(population,
+			return lambda population, offsprings: self._eliminationMethods.elitist_k_tournament_keep_s_best(population,
 																									   offsprings)
 		if 400 <= self.settings.problem_size < 600:
-			return lambda population, offsprings: self._eliminationMethods.elitist_k_tournament_keep_s_best(population, offsprings)
+			return lambda population, offsprings: self._eliminationMethods.elitist_k_tournament_keep_s_best(population,
+																											offsprings)
 
-		return lambda population, offsprings: self._eliminationMethods.elitist_k_tournament_keep_s_best(population, offsprings)
+		return lambda population, offsprings: self._eliminationMethods.elitist_k_tournament_keep_s_best(population,
+																										offsprings)
 
 	def insert_diversity_method(self) -> Callable[[PopulationProtocol], None]:
 		if self.settings.problem_size < 100:
 			return lambda _: None
 
 		if 100 <= self.settings.problem_size < 400:
-			return lambda population: self._eliminationMethods.replace_worst_with_random(population)
+			return lambda _: None
 
 		if 400 <= self.settings.problem_size < 600:
 			return lambda _: None
