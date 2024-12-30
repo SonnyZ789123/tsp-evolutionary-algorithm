@@ -32,7 +32,8 @@ class r0829897:
 
 		mean_fitness_history: List[float] = []
 		best_fitness_history: List[float] = []
-		variance_fitness_history: List[float] = []
+		time_between_iteration_history: List[float] = []
+		previous_timeLeft = 300
 
 		# Time the algorithm
 		start_time = time.time()
@@ -48,13 +49,12 @@ class r0829897:
 
 			mean_fitness = evolutionary_algorithm.population.mean_fitness()
 			best_fitness = evolutionary_algorithm.population.best_fitness()
-			variance_fitness = evolutionary_algorithm.population.variance_fitness()
 			best_solution = evolutionary_algorithm.population.best_individual().cycle
 
 			# For plotting
 			mean_fitness_history.append(mean_fitness)
 			best_fitness_history.append(best_fitness)
-			variance_fitness_history.append(variance_fitness)
+			# variance_fitness_history.append(variance_fitness)
 
 			###################################################
 			# Call the reporter with: KEEP THIS
@@ -63,6 +63,10 @@ class r0829897:
 			#  - a 1D numpy array in the cycle notation containing the best solution
 			#    with city numbering starting from 0
 			timeLeft = self.reporter.report(mean_fitness, best_fitness, best_solution)
+
+			time_between_iteration_history.append(previous_timeLeft - timeLeft) # TODO: Remove this
+			previous_timeLeft = timeLeft # TODO: Remove this
+
 			if timeLeft < 0:
 				break
 			###################################################
@@ -76,12 +80,13 @@ class r0829897:
 		mean_fitness_history_rebased = [-i for i in mean_fitness_history]
 		best_fitness_history_rebased = [-i for i in best_fitness_history]
 		generate_fitness_plot(iteration_numbers, mean_fitness_history_rebased, y_label="-Fitness",
-							  title=f"Mean fitness history for {filename}")
+							  title=f"Mean fitness for {filename}")
 		generate_fitness_plot(iteration_numbers, best_fitness_history_rebased, y_label="-Fitness",
-							  title=f"Best fitness history for {filename}")
-		generate_log_plot(iteration_numbers, variance_fitness_history, y_label="Variance fitness",
-						  title=f"Variance fitness history for {filename}")
+							  title=f"Best fitness for {filename}")
 		best_cycle_length = get_cycle_length(evolutionary_algorithm.population.best_individual().cycle, distance_matrix)
+		final_mean_fitness = mean_fitness_history_rebased[-1]
+		average_time_between_iterations = np.mean(time_between_iteration_history)
+		best_cycle = evolutionary_algorithm.population.best_individual().cycle
 
 		with open('history.txt', 'a') as file:
 			# Add text to the file
@@ -91,13 +96,12 @@ class r0829897:
 			file.write(f"Elapsed time for solving TSP: {elapsed_time:.2f} seconds\n")
 			print(f"Best individual cycle length: {best_cycle_length:.0f}")
 			file.write(f"Best individual cycle length: {best_cycle_length:.0f}\n")
+			print(f"Final mean fitness: {final_mean_fitness:.2f}")
+			file.write(f"Final mean fitness: {final_mean_fitness:.2f}\n")
+			print(f"Average time between iterations: {average_time_between_iterations:.6f} seconds")
+			file.write(f"Average time between iterations: {average_time_between_iterations:.6f} seconds\n")
+			print(f"Best cycle: {best_cycle}")
+			file.write(f"Best cycle: {best_cycle}\n")
 			file.write("====================================================\n")
 
-		# for saving tour50
-		with open('tour50_means.txt', 'a') as file:
-			file.write(f"{mean_fitness_history_rebased[-1]},")
-
-		with open('tour50_best.txt', 'a') as file:
-			file.write(f"{best_fitness_history_rebased[-1]},")
-
-		return elapsed_time, best_cycle_length
+		return elapsed_time, best_cycle_length, final_mean_fitness
