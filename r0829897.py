@@ -8,7 +8,7 @@ from classes.EvolutionaryAlgorithm import EvolutionaryAlgorithm
 from config.custom_types import DistanceMatrix
 from protocols.EvolutionaryAlgorithmProtocol import EvolutionaryAlgorithmProtocol
 from utils.cycle_utils import get_cycle_length
-from utils.plotting import generate_plot, generate_log_plot
+from utils.plotting import generate_fitness_plot, generate_log_plot
 
 
 # Modify the class name to match your student number.
@@ -73,12 +73,12 @@ class r0829897:
 
 		# Plotting
 		iteration_numbers = list(range(len(mean_fitness_history)))
-		mean_fitness_history_rebased = [(i / 1000 + 110) for i in mean_fitness_history]
-		best_fitness_history_rebased = [(i / 1000 + 110) for i in best_fitness_history]
-		generate_plot(iteration_numbers, mean_fitness_history_rebased, y_label="Mean fitness/1000 + 110",
-					  title=f"Mean fitness history for {filename}")
-		generate_plot(iteration_numbers, best_fitness_history_rebased, y_label="Best fitness/1000 + 110",
-					  title=f"Best fitness history for {filename}")
+		mean_fitness_history_rebased = [-i for i in mean_fitness_history]
+		best_fitness_history_rebased = [-i for i in best_fitness_history]
+		generate_fitness_plot(iteration_numbers, mean_fitness_history_rebased, y_label="-Fitness",
+							  title=f"Mean fitness history for {filename}")
+		generate_fitness_plot(iteration_numbers, best_fitness_history_rebased, y_label="-Fitness",
+							  title=f"Best fitness history for {filename}")
 		generate_log_plot(iteration_numbers, variance_fitness_history, y_label="Variance fitness",
 						  title=f"Variance fitness history for {filename}")
 		best_cycle_length = get_cycle_length(evolutionary_algorithm.population.best_individual().cycle, distance_matrix)
@@ -92,5 +92,12 @@ class r0829897:
 			print(f"Best individual cycle length: {best_cycle_length:.0f}")
 			file.write(f"Best individual cycle length: {best_cycle_length:.0f}\n")
 			file.write("====================================================\n")
+
+		# for saving tour50
+		with open('tour50_means.txt', 'a') as file:
+			file.write(f"{mean_fitness_history_rebased[-1]},")
+
+		with open('tour50_best.txt', 'a') as file:
+			file.write(f"{best_fitness_history_rebased[-1]},")
 
 		return elapsed_time, best_cycle_length
