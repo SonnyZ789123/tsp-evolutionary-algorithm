@@ -8,9 +8,8 @@ def main():
 if __name__ == "__main__":
 	best_cycle_lengths = []
 	elapsed_times = []
-	for i in range(3):
-		print("Iteration:", i+1)
-		elapsed_time, best_cycle_length = main()
+	for i in range(5):
+		elapsed_time, best_cycle_length, mean_fitness = main()
 		best_cycle_lengths.append(best_cycle_length)
 		elapsed_times.append(elapsed_time)
 	print("Average Elapsed Time:", round(sum(elapsed_times) / len(elapsed_times), 2))
