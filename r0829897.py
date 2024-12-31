@@ -100,8 +100,8 @@ class r0829897:
 			file.write(f"Final mean fitness: {final_mean_fitness:.2f}\n")
 			print(f"Average time between iterations: {average_time_between_iterations:.6f} seconds")
 			file.write(f"Average time between iterations: {average_time_between_iterations:.6f} seconds\n")
-			print(f"Best cycle: {best_cycle}")
-			file.write(f"Best cycle: {best_cycle}\n")
+			# print(f"Best cycle: {best_cycle}")
+			# file.write(f"Best cycle: {best_cycle}\n")
 			file.write("====================================================\n")
 
 		return elapsed_time, best_cycle_length, final_mean_fitness
